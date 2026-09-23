@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>fuelhaulers.live</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF0F2;--surface:#FFFFFF;--ink:#1B2430;--muted:#5B6673;--line:#D5DAE0;
+  --red:#C8102E;--s0:#2E7D46;--s1:#9A7B00;--s2:#D2601A;--s3:#C8102E;--chip:#E1E6EB;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141A22;--surface:#1E2631;--ink:#E8ECF0;--muted:#9AA5B1;--line:#2E3947;--chip:#2A3441;--s1:#C9A21A;
+}}
+:root[data-theme="dark"]{--bg:#141A22;--surface:#1E2631;--ink:#E8ECF0;--muted:#9AA5B1;--line:#2E3947;--chip:#2A3441;--s1:#C9A21A;}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 Barlow,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3,.cond{font-family:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;font-weight:700;letter-spacing:.01em;margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--s2);outline-offset:2px}
+header{background:#1B2430;color:#EDF0F2}
+.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;padding:14px 20px;max-width:1040px;margin:0 auto}
+.side{display:flex;align-items:center;gap:18px}
+.side.right{justify-content:flex-end}
+.truck{height:58px;width:auto;display:block}
+.placard{width:36px;height:36px;flex:none;transform:rotate(45deg);background:var(--red);border:2px solid #fff;display:grid;place-items:center;margin:0 6px}
+.placard span{transform:rotate(-45deg);font:700 12px "Barlow Condensed",sans-serif;color:#fff}
+.brand{font-size:30px;line-height:1;text-align:center}
+.brand small{display:block;font:500 13px Barlow,sans-serif;opacity:.75;letter-spacing:0;margin-top:3px}
+.tape{height:7px;background:repeating-linear-gradient(90deg,var(--red) 0 30px,#fff 30px 60px)}
+.shell{display:flex;align-items:flex-start;max-width:1040px;margin:0 auto}
+.rail{position:sticky;top:env(safe-area-inset-top,0px);flex:none;width:190px;padding:16px 0 16px 16px;display:flex;flex-direction:column;gap:6px}
+.rail button{display:flex;align-items:center;gap:10px;text-align:left;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-left:5px solid transparent;border-radius:6px;padding:11px 12px;font:600 18px "Barlow Condensed",sans-serif}
+.rail button[aria-current="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink);border-left-color:var(--red)}
+.rail .ic{font-size:20px;line-height:1}
+main{flex:1;min-width:0;padding:16px 16px 40px}
+@media (max-width:620px){
+  .bar{grid-template-columns:1fr 1fr;grid-template-areas:"b b" "l r";gap:10px;padding:12px}
+  .brand{grid-area:b;font-size:24px}.side.left{grid-area:l}.side.right{grid-area:r}
+  .side{gap:10px}.truck{height:34px}.placard{width:26px;height:26px;margin:0 4px}.placard span{font-size:9px}
+  .rail{width:80px;padding:12px 0 12px 8px}
+  .rail button{flex-direction:column;gap:3px;padding:9px 2px;font-size:13px;text-align:center}
+  main{padding:12px 10px 40px}
+}
+.chatBox{display:flex;flex-direction:column;height:60vh;min-height:320px;padding:0}
+.msgs{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.msg{min-width:0;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.msg.mine{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.msg .who{font-size:13px;font-weight:600}
+.msg .when{font-weight:400;color:var(--muted)}
+.msg.mine .when{color:inherit;opacity:.7}
+.av{border-radius:50%;flex:none;display:inline-grid;place-items:center;object-fit:cover;color:#fff;font:700 14px "Barlow Condensed",sans-serif}
+.mrow{display:flex;gap:8px;align-items:flex-end;max-width:90%;align-self:flex-start}
+.mrow.mine{align-self:flex-end;flex-direction:row-reverse}
+.profTop{display:flex;gap:16px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.photoBtn{display:inline-block;margin:0;padding:9px 14px;font-size:16px;cursor:pointer}
+.ghost.sm{padding:1px 6px;font-size:12px;margin-left:4px;opacity:.7}
+.btn:disabled{opacity:.6;cursor:wait}
+.compose{display:flex;gap:8px;border-top:1px solid var(--line);padding:10px}
+.compose input{flex:1;min-width:0}
+.note{font-size:14px;color:var(--muted);margin:0 0 14px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px}
+.chip{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:15px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.term{display:flex;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:6px;margin-bottom:10px;padding:0;overflow:hidden}
+.term .edge{width:8px;flex:none}
+.term .body{flex:1;padding:12px 14px;min-width:0}
+.term h3{font-size:22px;line-height:1.1}
+.addr{font-size:14px;color:var(--muted)}
+.facts{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:14px;margin-top:6px}
+.facts b{font-weight:600}
+.pill{align-self:center;margin-right:14px;padding:6px 12px;border-radius:4px;color:#fff;font:700 18px "Barlow Condensed",sans-serif;min-width:88px;text-align:center}
+.pill.none{background:var(--chip);color:var(--muted);font-size:15px}
+.tag{display:inline-block;font-size:12px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--muted);margin-left:6px;vertical-align:middle;font-family:Barlow,sans-serif;font-weight:500}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;margin-bottom:10px}
+.btn{border:0;border-radius:6px;padding:12px 18px;font:700 18px "Barlow Condensed",sans-serif;background:var(--red);color:#fff}
+.btn.alt{background:var(--chip);color:var(--ink)}
+.btn.block{width:100%}
+label{display:block;font-weight:600;font-size:15px;margin:12px 0 6px}
+input[type=text],input[type=email],input[type=password],select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+textarea{min-height:80px;resize:vertical}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:500;margin:12px 0}
+.check input{width:20px;height:20px;margin-top:2px}
+.statusPick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.statusPick button{border:2px solid transparent;border-radius:6px;padding:14px 4px;color:#fff;font:700 19px "Barlow Condensed",sans-serif;opacity:.55}
+.statusPick button[aria-pressed="true"]{opacity:1;border-color:var(--ink)}
+.stepper{display:flex;align-items:center;gap:12px}
+.stepper button{width:44px;height:44px;border-radius:6px;border:1px solid var(--line);background:var(--bg);font-size:22px}
+.stepper output{font:700 26px "Barlow Condensed",sans-serif;min-width:40px;text-align:center}
+.sheetWrap{position:fixed;inset:0;z-index:10;background:rgba(10,14,20,.55);display:none;align-items:flex-end;justify-content:center}
+.sheetWrap.open{display:flex}
+.sheet{background:var(--surface);width:100%;max-width:760px;max-height:88vh;overflow:auto;border-radius:12px 12px 0 0;padding:18px 18px calc(24px + env(safe-area-inset-bottom,0px))}
+.sheetHead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px}
+.sheetHead h2{font-size:28px;line-height:1.05}
+.x{background:var(--chip);border:0;border-radius:6px;width:38px;height:38px;font-size:20px;flex:none}
+.report{border-top:1px solid var(--line);padding:12px 0}
+.report .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.mini{font:700 15px "Barlow Condensed",sans-serif;color:#fff;padding:2px 8px;border-radius:3px}
+.stale{opacity:.6}
+.post .who{font-weight:600}
+.post .when{font-size:13px;color:var(--muted)}
+.post p{margin:6px 0}
+.linkbox{display:block;border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-size:14px;word-break:break-all;color:var(--ink);background:var(--bg);text-decoration:none}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.ghost{background:none;border:1px solid var(--line);border-radius:6px;padding:6px 12px;font-size:14px}
+.stars{color:#D2A019;letter-spacing:1px}
+.scores{display:grid;grid-template-columns:auto 1fr auto;gap:4px 10px;font-size:14px;align-items:center;margin-top:8px}
+.meter{height:6px;background:var(--chip);border-radius:3px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--ink)}
+.hiring{display:inline-block;background:var(--s0);color:#fff;font-size:13px;font-weight:600;padding:2px 8px;border-radius:3px;margin-top:6px}
+.rate{display:grid;grid-template-columns:1fr auto;align-items:center;gap:6px 10px}
+.rate select{width:auto}
+.empty{text-align:center;padding:28px 16px;color:var(--muted)}
+.tribute h3{font-size:24px}
+.section{font-size:26px;margin:4px 0 4px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:6px;z-index:20;font-weight:600;display:none}
+@media (prefers-reduced-motion:no-preference){.sheet{animation:up .18s ease-out}@keyframes up{from{transform:translateY(24px);opacity:.6}}}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="side left">
+      <div class="placard" aria-hidden="true"><span>1203</span></div>
+      <svg class="truck" viewBox="0 0 230 72" role="img" aria-label="Fuel tanker truck">
+        <rect x="4" y="12" width="150" height="36" rx="18" fill="#C9D1D9" stroke="#8B96A3" stroke-width="2"/>
+        <path d="M30 13v34M70 13v34M114 13v34" stroke="#9AA5B1" stroke-width="2"/>
+        <rect x="20" y="8" width="120" height="3" fill="#8B96A3"/>
+        <rect x="84" y="22" width="14" height="14" transform="rotate(45 91 29)" fill="#C8102E" stroke="#fff" stroke-width="1.5"/>
+        <rect x="8" y="48" width="150" height="5" fill="#3A4452"/>
+        <rect x="150" y="50" width="70" height="5" fill="#3A4452"/>
+        <rect x="159" y="2" width="3" height="24" fill="#9AA5B1"/>
+        <path d="M162 50V16a4 4 0 0 1 4-4h22l6 14h18a6 6 0 0 1 6 6v18z" fill="#C8102E"/>
+        <path d="M170 16h16l5 11h-21z" fill="#BFD7EA"/>
+        <rect x="216" y="42" width="6" height="8" fill="#9AA5B1"/>
+        <g fill="#0A0D12" stroke="#5B6673" stroke-width="1.5"><circle cx="106" cy="56" r="9"/><circle cx="126" cy="56" r="9"/><circle cx="172" cy="56" r="9"/><circle cx="206" cy="56" r="9"/></g>
+        <g fill="#C9D1D9"><circle cx="106" cy="56" r="3"/><circle cx="126" cy="56" r="3"/><circle cx="172" cy="56" r="3"/><circle cx="206" cy="56" r="3"/></g>
+      </svg>
+    </div>
+    <div class="brand cond">fuelhaulers.live<small>Know the rack before you roll</small></div>
+    <div class="side right">
+      <svg class="truck" viewBox="0 0 170 72" role="img" aria-label="Bobtail fuel truck">
+        <g transform="translate(170 0) scale(-1 1)">
+          <rect x="6" y="14" width="104" height="34" rx="17" fill="#C9D1D9" stroke="#8B96A3" stroke-width="2"/>
+          <path d="M40 15v32M76 15v32" stroke="#9AA5B1" stroke-width="2"/>
+          <rect x="18" y="10" width="80" height="3" fill="#8B96A3"/>
+          <rect x="51" y="24" width="14" height="14" transform="rotate(45 58 31)" fill="#C8102E" stroke="#fff" stroke-width="1.5"/>
+          <rect x="1" y="28" width="7" height="16" rx="2" fill="#5B6673"/>
+          <rect x="4" y="48" width="154" height="5" fill="#3A4452"/>
+          <rect x="111" y="4" width="3" height="22" fill="#9AA5B1"/>
+          <path d="M114 50V16a4 4 0 0 1 4-4h20l6 14h14a6 6 0 0 1 6 6v18z" fill="#C8102E"/>
+          <path d="M122 16h14l5 11h-19z" fill="#BFD7EA"/>
+          <g fill="#0A0D12" stroke="#5B6673" stroke-width="1.5"><circle cx="30" cy="56" r="9"/><circle cx="50" cy="56" r="9"/><circle cx="146" cy="56" r="9"/></g>
+          <g fill="#C9D1D9"><circle cx="30" cy="56" r="3"/><circle cx="50" cy="56" r="3"/><circle cx="146" cy="56" r="3"/></g>
+        </g>
+      </svg>
+      <div class="placard" aria-hidden="true"><span>1993</span></div>
+    </div>
+  </div>
+  <div class="tape"></div>
+</header>
+<div class="shell">
+  <nav class="rail" id="tabs" aria-label="Sections"></nav>
+  <main id="app"></main>
+</div>
+<div class="sheetWrap" id="sheetWrap"><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SB_URL='https://hkfcgyzanknzccsifqcr.supabase.co';
+const SB_KEY='sb_publishable_p32bVhg6uSRlU_zjpt0abw_BclUFBfU';
+const sb=window.supabase.createClient(SB_URL,SB_KEY);
+const M=60000,FRESH=120*M;
+const REGIONS=['San Antonio','Austin','Houston','Dallas','Corpus Christi','Laredo','Rio Grande Valley'];
+const ST=[{n:'Dead',c:'var(--s0)'},{n:'Moderate',c:'var(--s1)'},{n:'Busy',c:'var(--s2)'},{n:'Packed',c:'var(--s3)'}];
+const CATS=[['pay','Pay'],['home','Home time'],['equip','Equipment'],['dispatch','Dispatch'],['safety','Safety']];
+const TABS=[['racks','Racks','🚦'],['chat','City Chat','💬'],['feed','Feed','📣'],['jobs','Jobs & Reviews','💼'],['memorial','Memorial','🕯️'],['me','Me','👤']];
+const TERMINALS=[
+    {"id": "T-74-TX-2742", "name": "Flint Hills Resources", "addr": "498 Pop Gunn Dr, San Antonio", "region": "San Antonio"},
+    {"id": "T-74-TX-2760", "name": "Flint Hills Resources (Cornerway)", "addr": "4800 Cornerway Blvd, San Antonio", "region": "San Antonio"},
+    {"id": "T-74-TX-2737", "name": "CITGO San Antonio", "addr": "4851 Emil Rd, San Antonio", "region": "San Antonio"},
+    {"id": "T-74-TX-2745", "name": "Global Companies", "addr": "510 Petroleum Dr, San Antonio", "region": "San Antonio"},
+    {"id": "T-74-TX-2740", "name": "ExxonMobil Pipeline", "addr": "3214 N Pan Am Expy, San Antonio", "region": "San Antonio"},
+    {"id": "T-74-TX-2738", "name": "NuStar San Antonio East", "addr": "4719 Corner Pkwy, San Antonio", "region": "San Antonio"},
+    {"id": "T-74-TX-2739", "name": "NuStar San Antonio South", "addr": "10619 Hwy 281 S, San Antonio", "region": "San Antonio"},
+    {"id": "T-74-TX-2712", "name": "San Antonio Refinery", "addr": "7811 S Presa St, San Antonio", "region": "San Antonio"},
+    {"id": "T-74-TX-2747", "name": "Diamond Shamrock Three Rivers", "addr": "301 Leroy St, Three Rivers", "region": "San Antonio"},
+    {"id": "T-74-TX-2759", "name": "Lazarus Energy", "addr": "11372 US Hwy 87 E, Nixon", "region": "San Antonio"},
+    {"id": "T-74-TX-2771", "name": "CITGO Luling", "addr": "5120 FM Rd 2, Luling", "region": "San Antonio"},
+    {"id": "T-74-TX-2706", "name": "Flint Hills Resources Austin", "addr": "9011 Johnny Morris Rd, Austin", "region": "Austin"},
+    {"id": "T-74-TX-2758", "name": "Mustang Ridge Fuels Terminal", "addr": "1165 E Lone Star Dr, Buda", "region": "Austin"},
+    {"id": "T-74-TX-2752", "name": "Flint Hills Resources Bastrop", "addr": "115 Mt Olive Rd, Cedar Creek", "region": "Austin"},
+    {"id": "T-74-TX-2765", "name": "Flint Hills Resources Taylor", "addr": "11496 Chandler Rd, Taylor", "region": "Austin"},
+    {"id": "T-75-TX-2696", "name": "Valero Taylor Terminal", "addr": "12992 Chandler Rd, Taylor", "region": "Austin"},
+    {"id": "T-76-TX-2789", "name": "Chevron Galena Park", "addr": "12523 American Petroleum Rd, Galena Park", "region": "Houston"},
+    {"id": "T-76-TX-2792", "name": "Magellan Galena Park", "addr": "12901 American Petroleum Rd, Galena Park", "region": "Houston"},
+    {"id": "T-76-TX-2788", "name": "Kinder Morgan (906 Clinton)", "addr": "906 Clinton Dr, Galena Park", "region": "Houston"},
+    {"id": "T-76-TX-2819", "name": "Kinder Morgan (1500 Clinton)", "addr": "1500 Clinton Dr, Galena Park", "region": "Houston"},
+    {"id": "T-76-TX-2830", "name": "Kinder Morgan Pasadena Truck Facility", "addr": "400 N Jefferson, Pasadena", "region": "Houston"},
+    {"id": "T-76-TX-2809", "name": "Kinder Morgan (Witter)", "addr": "530 N Witter, Pasadena", "region": "Houston"},
+    {"id": "T-76-TX-2811", "name": "Phillips 66 Pasadena", "addr": "100 Jefferson St, Pasadena", "region": "Houston"},
+    {"id": "T-76-TX-2834", "name": "Enterprise Pasadena Products", "addr": "1500 North South St, Pasadena", "region": "Houston"},
+    {"id": "T-76-TX-2782", "name": "Global Companies Pasadena", "addr": "1320 W Shaw St, Pasadena", "region": "Houston"},
+    {"id": "T-74-TX-2772", "name": "Western Refining Pasadena", "addr": "419 N Preston Rd, Pasadena", "region": "Houston"},
+    {"id": "T-76-TX-2865", "name": "MVP Terminaling", "addr": "3449 Pasadena Fwy, Pasadena", "region": "Houston"},
+    {"id": "T-76-TX-2806", "name": "Valero Houston", "addr": "9701 Manchester, Houston", "region": "Houston"},
+    {"id": "T-76-TX-2808", "name": "ExxonMobil (North Fwy)", "addr": "8700 North Fwy, Houston", "region": "Houston"},
+    {"id": "T-76-TX-2812", "name": "ExxonMobil (Almeda)", "addr": "10501 E Almeda, Houston", "region": "Houston"},
+    {"id": "T-76-TX-2831", "name": "Magellan Wallisville", "addr": "7901 Wallisville Rd, Houston", "region": "Houston"},
+    {"id": "T-76-TX-2794", "name": "US Venture Greenspoint", "addr": "12325 North Fwy, Houston", "region": "Houston"},
+    {"id": "T-76-TX-2790", "name": "Gulf Coast Energy", "addr": "17617 Aldine Westfield Rd, Houston", "region": "Houston"},
+    {"id": "T-76-TX-2805", "name": "Petroleum Wholesale", "addr": "1801 Collingsworth, Houston", "region": "Houston"},
+    {"id": "T-76-TX-2817", "name": "ERPC North Houston", "addr": "Ferrall & E Hardy, Houston", "region": "Houston"},
+    {"id": "T-76-TX-2871", "name": "Almeda Terminal", "addr": "11750 Almeda Rd, Houston", "region": "Houston"},
+    {"id": "T-76-TX-2842", "name": "Petromax", "addr": "1519 S Sheldon Rd, Houston", "region": "Houston"},
+    {"id": "T-76-TX-2877", "name": "Deer Park Refining", "addr": "5900 Hwy 225, Deer Park", "region": "Houston"},
+    {"id": "T-76-TX-2780", "name": "LBC Houston", "addr": "11666 Port Rd, Seabrook", "region": "Houston"},
+    {"id": "T-75-TX-2661", "name": "Magellan Dallas", "addr": "4200 Singleton Blvd, Dallas", "region": "Dallas"},
+    {"id": "T-75-TX-2662", "name": "Global Companies Dallas", "addr": "3900 Singleton Blvd, Dallas", "region": "Dallas"},
+    {"id": "T-75-TX-2660", "name": "ExxonMobil Irving", "addr": "1201 E Airport Fwy, Irving", "region": "Dallas"},
+    {"id": "T-75-TX-2664", "name": "Flint Hills Resources Fort Worth", "addr": "12550 Trinity Blvd, Euless", "region": "Dallas"},
+    {"id": "T-75-TX-2690", "name": "Sunoco Euless", "addr": "12625 Calloway Cemetery Rd, Euless", "region": "Dallas"},
+    {"id": "T-75-TX-2680", "name": "NuStar Southlake", "addr": "1700 Hwy 26, Grapevine", "region": "Dallas"},
+    {"id": "T-75-TX-2666", "name": "US Venture Fort Worth (Brennan)", "addr": "2525 Brennan St, Fort Worth", "region": "Dallas"},
+    {"id": "T-75-TX-2667", "name": "US Venture Fort Worth (Terminal Rd)", "addr": "301 Terminal Rd, Fort Worth", "region": "Dallas"},
+    {"id": "T-75-TX-2669", "name": "Global Companies Fort Worth", "addr": "3200 N Sylvania, Fort Worth", "region": "Dallas"},
+    {"id": "T-75-TX-2665", "name": "Magellan Aledo", "addr": "6000 IH 20, Aledo", "region": "Dallas"},
+    {"id": "T-75-TX-2659", "name": "Sunoco Caddo Mills", "addr": "2738 County Rd 2168, Caddo Mills", "region": "Dallas"},
+    {"id": "T-75-TX-2697", "name": "US Venture Melissa", "addr": "160 County Rd 160, Melissa", "region": "Dallas"},
+    {"id": "T-74-TX-2714", "name": "Valero Corpus Christi", "addr": "5900 Up River Rd, Corpus Christi", "region": "Corpus Christi"},
+    {"id": "T-74-TX-2716", "name": "CITGO Corpus Christi", "addr": "1308 Oak Park Ave, Corpus Christi", "region": "Corpus Christi"},
+    {"id": "T-74-TX-2721", "name": "Flint Hills Resources Corpus Christi", "addr": "2825 Suntide Rd, Corpus Christi", "region": "Corpus Christi"},
+    {"id": "T-74-TX-2767", "name": "Enterprise GC", "addr": "5032 Up River Rd, Corpus Christi", "region": "Corpus Christi"},
+    {"id": "T-76-TX-2846", "name": "Magellan Corpus Christi", "addr": "1802 Poth Ln, Corpus Christi", "region": "Corpus Christi"},
+    {"id": "T-76-TX-2838", "name": "Buckeye Texas Hub", "addr": "7002 Marvin L Berry Rd, Corpus Christi", "region": "Corpus Christi"},
+    {"id": "T-74-TX-2715", "name": "NuStar Laredo", "addr": "13380 S Unitec Dr, Laredo", "region": "Laredo"},
+    {"id": "T-74-TX-2700", "name": "NuStar Edinburg", "addr": "222 W Ingle Rd, Edinburg", "region": "Rio Grande Valley"},
+    {"id": "T-74-TX-2768", "name": "Delmita Terminal", "addr": "1189 FM 2294, Delmita", "region": "Rio Grande Valley"},
+    {"id": "T-74-TX-2729", "name": "NuStar Harlingen", "addr": "Hwy 106, 4.5 mi east, Harlingen", "region": "Rio Grande Valley"},
+    {"id": "T-76-TX-2864", "name": "Titan Fuel Terminal (Port Rd)", "addr": "24581 E Port Rd, Harlingen", "region": "Rio Grande Valley"},
+    {"id": "T-74-TX-2770", "name": "Titan Fuel Terminals (FM 160)", "addr": "26792 FM 160, Harlingen", "region": "Rio Grande Valley"},
+    {"id": "T-74-TX-2709", "name": "CITGO Brownsville", "addr": "11001 R.L. Ostos Rd, Brownsville", "region": "Rio Grande Valley"},
+    {"id": "T-74-TX-2761", "name": "Motus TI", "addr": "14301 R.L. Ostos Rd, Brownsville", "region": "Rio Grande Valley"},
+    {"id": "T-74-TX-2717", "name": "TransMontaigne SouthWest", "addr": "10150 State Hwy 48, Brownsville", "region": "Rio Grande Valley"},
+    {"id": "T-74-TX-2754", "name": "TransMontaigne Border", "addr": "8700 State Hwy 48, Brownsville", "region": "Rio Grande Valley"},
+    {"id": "T-74-TX-2755", "name": "TransMontaigne Tejano", "addr": "6200 State Hwy 48, Brownsville", "region": "Rio Grande Valley"},
+    {"id": "T-74-TX-2769", "name": "Brownsville Terminal", "addr": "9351 Old State Hwy 58, Brownsville", "region": "Rio Grande Valley"}
+];
+
+/* screen settings remembered on this phone (not driver data) */
+let S={tab:'racks',region:'San Antonio',city:'San Antonio',q:'',auth:'in'};
+try{Object.assign(S,JSON.parse(localStorage.getItem('fhl-ui')||'{}'))}catch(e){}
+try{localStorage.removeItem('fhl-demo-v1')}catch(e){}
+function save(){try{localStorage.setItem('fhl-ui',JSON.stringify({tab:S.tab,region:S.region,city:S.city}))}catch(e){}}
+
+/* live data from the database */
+const D={session:null,me:null,people:{},reports:[],loaded:{},posts:null,liked:new Set(),chats:{},companies:null,reviews:[],jobs:[],tributes:null,checkEmail:null,recovery:false};
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const T=s=>Date.parse(s);
+function ago(t){const d=Math.round((Date.now()-t)/M);if(d<1)return'just now';if(d<60)return d+' min ago';const h=Math.round(d/60);if(h<24)return h+' hr ago';return Math.round(h/24)+' days ago'}
+function fresh(r){return r&&Date.now()-T(r.created_at)<FRESH}
+function stars(v){const f=Math.round(v);return'★'.repeat(f)+'☆'.repeat(5-f)}
+function toast(msg){const t=$('toast');t.textContent=msg;t.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(()=>t.style.display='none',2800)}
+function openSheet(html){$('sheet').innerHTML=html;$('sheetWrap').classList.add('open');document.body.style.overflow='hidden'}
+function closeSheet(){$('sheetWrap').classList.remove('open');document.body.style.overflow=''}
+$('sheetWrap').addEventListener('click',e=>{if(e.target.id==='sheetWrap')closeSheet()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+const head=t=>`<div class="sheetHead"><h2>${t}</h2><button class="x" onclick="closeSheet()" aria-label="Close">✕</button></div>`;
+function hue(s){let h=0;for(const c of String(s))h=(h*31+c.charCodeAt(0))%360;return h}
+function person(p){if(p&&p.id)D.people[p.id]=p;return p}
+function who(uid,emb){return emb||D.people[uid]||{name:'Driver'}}
+function av(name,photo,sz=32){
+  if(photo)return `<img class="av" src="${esc(photo)}" alt="" style="width:${sz}px;height:${sz}px">`;
+  const ini=esc(String(name||'?').trim().split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase());
+  return `<span class="av" aria-hidden="true" style="width:${sz}px;height:${sz}px;font-size:${Math.round(sz*.42)}px;background:hsl(${hue(name)} 45% 38%)">${ini}</span>`;
+}
+function busy(b,on,label){if(!b)return;b.disabled=on;if(on){b.dataset.l=b.textContent;b.textContent=label||'Working...'}else if(b.dataset.l)b.textContent=b.dataset.l}
+function uid(){return D.session?.user?.id}
+function canPost(){
+  if(!D.session){closeSheet();toast('Sign in first');go('me');return false}
+  if(!D.me||!D.me.approved){toast('Your account is waiting for approval');return false}
+  return true;
+}
+async function flag(kind,id){
+  if(!D.session){toast('Sign in to report something');return}
+  const reason=prompt('What is wrong with this? (optional)');if(reason===null)return;
+  const {error}=await sb.from('content_flags').insert({kind,item_id:String(id),reason:reason.slice(0,500)});
+  toast(error?'Could not send the report':'Thanks. An admin will look at it.');
+}
+
+function renderTabs(){$('tabs').innerHTML=TABS.map(([k,l,i])=>`<button aria-current="${S.tab===k}" onclick="go('${k}')"><span class="ic" aria-hidden="true">${i}</span><span>${l}</span></button>`).join('')}
+function go(k){closeSheet();S.tab=k;save();render();window.scrollTo(0,0)}
+
+/* ---------- RACKS ---------- */
+async function loadReports(){
+  const since=new Date(Date.now()-24*60*M).toISOString();
+  const {data,error}=await sb.from('reports').select('id,terminal_id,status,trucks,lanes_down,note,created_at,report_confirms(count)')
+    .gte('created_at',since).order('created_at',{ascending:false}).limit(1000);
+  if(error){console.error(error);return}
+  D.reports=data.map(r=>({...r,ok:r.report_confirms?.[0]?.count||0}));D.loaded.reports=true;
+  if(S.tab==='racks')render();
+}
+function latest(tid){return D.reports.find(r=>r.terminal_id===tid)}
+function lanesTxt(r){return r.lanes_down?`<b>${r.lanes_down}</b> lane${r.lanes_down>1?'s':''} down`:'No lanes reported down'}
+function racks(){
+  const q=(S.q||'').toLowerCase();
+  const list=TERMINALS.filter(t=>(S.region==='All'||t.region===S.region)&&(!q||(t.name+' '+t.addr+' '+t.id).toLowerCase().includes(q)))
+    .sort((a,b)=>((fresh(latest(b.id))?1:0)-(fresh(latest(a.id))?1:0))||a.name.localeCompare(b.name));
+  return `<p class="note">${D.loaded.reports?'Tap a terminal to see reports or post one when you get there.':'Loading rack reports...'}</p>
+  <input type="text" id="tq" value="${esc(S.q||'')}" placeholder="Search terminals by name, street, or TCN" style="margin-bottom:12px" oninput="S.q=this.value;render()">
+  <div class="chips">${['All',...REGIONS].map(r=>`<button class="chip" aria-pressed="${S.region===r}" onclick="S.region='${r}';save();render()">${r}</button>`).join('')}</div>
+  ${list.length?'':'<div class="card empty">No terminals match that search.</div>'}
+  ${list.map(t=>{const r=latest(t.id),f=fresh(r);return`
+  <button class="term" onclick="terminal('${t.id}')">
+    <span class="edge" style="background:${f?ST[r.status].c:'var(--chip)'}"></span>
+    <span class="body"><h3>${esc(t.name)}</h3>
+      <span class="addr">${esc(t.addr)}</span>
+      <span class="facts">${f?`<span><b>${r.trucks}</b> in line</span><span>${lanesTxt(r)}</span><span>${ago(T(r.created_at))}</span>`:`<span>No report in the last 2 hours</span>`}</span>
+    </span>
+    ${f?`<span class="pill" style="background:${ST[r.status].c}">${ST[r.status].n}</span>`:`<span class="pill none">No data</span>`}
+  </button>`}).join('')}`;
+}
+function terminal(id){
+  const t=TERMINALS.find(x=>x.id===id),reps=D.reports.filter(r=>r.terminal_id===id).slice(0,8);
+  openSheet(head(esc(t.name))+`<p class="addr" style="margin:0 0 14px">${esc(t.addr)}<br>TCN ${esc(t.id)}</p>
+  <button class="btn block" onclick="reportForm('${id}')">Report rack status</button>
+  <h3 class="section" style="margin-top:18px">Reports from the last 24 hours</h3>
+  ${reps.length?reps.map(r=>`<div class="report ${fresh(r)?'':'stale'}">
+    <div class="top"><span class="mini" style="background:${ST[r.status].c}">${ST[r.status].n}</span><span class="addr">${ago(T(r.created_at))}</span></div>
+    <div class="facts"><span><b>${r.trucks}</b> in line</span><span>${lanesTxt(r)}</span><span>Verified driver</span></div>
+    ${r.note?`<p style="margin:6px 0 0">${esc(r.note)}</p>`:''}
+    <div class="actions">${fresh(r)?`<button class="ghost" onclick="confirmR(${r.id},'${id}')">Still accurate (${r.ok})</button>`:''}<button class="ghost" onclick="flag('report',${r.id})">Report</button></div>
+  </div>`).join(''):'<p class="empty">No reports yet. Be the first when you get there.</p>'}`);
+}
+async function confirmR(rid,tid){
+  if(!canPost())return;
+  const {error}=await sb.from('report_confirms').insert({report_id:rid});
+  if(error){toast(error.code==='23505'?'You already confirmed this one':'Could not confirm: '+error.message);return}
+  const r=D.reports.find(x=>x.id===rid);if(r)r.ok++;terminal(tid);toast('Thanks for confirming');
+}
+let draft;
+function reportForm(id){
+  if(!canPost())return;
+  const t=TERMINALS.find(x=>x.id===id);draft={tid:id,s:null,trucks:0};
+  openSheet(head('Report: '+esc(t.name))+`
+  <label>How busy is it?</label>
+  <div class="statusPick" id="sp">${ST.map((s,i)=>`<button style="background:${s.c}" aria-pressed="false" onclick="pick(${i})">${s.n}</button>`).join('')}</div>
+  <label>Trucks in line</label>
+  <div class="stepper"><button onclick="step(-1)" aria-label="Fewer">−</button><output id="tc">0</output><button onclick="step(1)" aria-label="More">+</button></div>
+  <label for="dn">Lanes down</label>
+  <select id="dn">${Array.from({length:9},(_,i)=>`<option value="${i}">${i}</option>`).join('')}</select>
+  <label for="nt">Anything else? (optional)</label>
+  <textarea id="nt" maxlength="300" placeholder="Example: lane 2 out of additive"></textarea>
+  <label class="check"><input type="checkbox" id="pk"> I'm parked or stopped. I am not driving.</label>
+  <button class="btn block" onclick="submitReport(this)">Post report</button>`);
+}
+function pick(i){draft.s=i;[...$('sp').children].forEach((b,j)=>b.setAttribute('aria-pressed',i===j))}
+function step(d){draft.trucks=Math.min(200,Math.max(0,draft.trucks+d));$('tc').textContent=draft.trucks}
+async function submitReport(b){
+  if(draft.s===null)return toast('Pick how busy it is');
+  if(!$('pk').checked)return toast("Only post when you're parked");
+  busy(b,true,'Posting...');
+  const {error}=await sb.from('reports').insert({terminal_id:draft.tid,status:draft.s,trucks:draft.trucks,lanes_down:+$('dn').value,note:$('nt').value.trim()||null});
+  busy(b,false);
+  if(error)return toast('Could not post: '+error.message);
+  closeSheet();toast('Report posted');loadReports();
+}
+
+/* ---------- CITY CHAT ---------- */
+async function loadChat(r){
+  const {data,error}=await sb.from('chat_messages').select('id,region,text,created_at,user_id,profiles(id,name,photo_url)')
+    .eq('region',r).order('created_at',{ascending:false}).limit(100);
+  if(error){console.error(error);D.chats[r]=undefined;return}
+  data.forEach(m=>person(m.profiles));D.chats[r]=data.reverse();
+  if(S.tab==='chat'&&S.city===r)render();
+}
+function chat(){
+  const c=S.city;
+  if(D.chats[c]===undefined){D.chats[c]=null;loadChat(c)}
+  const msgs=D.chats[c];
+  return `<h2 class="section">City chat</h2>
+  <p class="note">Talk with drivers in your area. Keep it clean, and never type while driving.</p>
+  <div class="chips">${REGIONS.map(r=>`<button class="chip" aria-pressed="${c===r}" onclick="S.city='${r}';save();render()">${r}</button>`).join('')}</div>
+  <div class="card chatBox">
+    <div class="msgs" id="msgs">${msgs===null?'<p class="empty">Loading...</p>':msgs.length?msgs.map(m=>{const p=who(m.user_id,m.profiles),mine=m.user_id===uid()?'mine':'';return`<div class="mrow ${mine}">${av(p.name,p.photo_url,30)}<div class="msg ${mine}"><div class="who">${esc(p.name)} <span class="when">${ago(T(m.created_at))}</span></div>${esc(m.text)}${mine?'':` <button class="ghost sm" onclick="flag('chat',${m.id})" aria-label="Report message">⚑</button>`}</div></div>`}).join(''):'<p class="empty">No messages yet. Say hello.</p>'}</div>
+    <div class="compose"><input type="text" id="cm" maxlength="500" placeholder="Message ${c} drivers" onkeydown="if(event.key==='Enter')sendMsg()"><button class="btn" onclick="sendMsg()">Send</button></div>
+  </div>`;
+}
+async function sendMsg(){
+  if(!canPost())return;const v=$('cm').value.trim();if(!v)return;
+  $('cm').value='';
+  const {error}=await sb.from('chat_messages').insert({region:S.city,text:v});
+  if(error){$('cm').value=v;return toast('Could not send: '+error.message)}
+  loadChat(S.city);
+}
+
+/* ---------- FEED ---------- */
+async function loadPosts(){
+  const {data,error}=await sb.from('posts').select('id,text,link,created_at,user_id,profiles(id,name,photo_url),post_likes(count)')
+    .order('created_at',{ascending:false}).limit(50);
+  if(error){console.error(error);return}
+  data.forEach(p=>person(p.profiles));
+  D.posts=data.map(p=>({...p,likes:p.post_likes?.[0]?.count||0}));
+  if(uid()){const {data:l}=await sb.from('post_likes').select('post_id').eq('user_id',uid());D.liked=new Set((l||[]).map(x=>x.post_id))}
+  if(S.tab==='feed')render();
+}
+function feed(){
+  if(!D.posts)return '<div class="card empty">Loading...</div>';
+  return `<div class="card">
+    <label for="pt" style="margin-top:0">Share with the drivers</label>
+    <textarea id="pt" maxlength="1000" placeholder="News, a laugh, a heads-up..."></textarea>
+    <label for="pl">Video or link (optional)</label>
+    <input type="text" id="pl" maxlength="500" placeholder="Paste a YouTube or TikTok link">
+    <div style="margin-top:12px"><button class="btn" onclick="addPost(this)">Post</button></div>
+  </div>
+  ${D.posts.length?'':'<div class="card empty">No posts yet. Start things off.</div>'}
+  ${D.posts.map(p=>{const w=who(p.user_id,p.profiles);return`<div class="card post">
+    <div style="display:flex;gap:10px;align-items:center">${av(w.name,w.photo_url,40)}<div><div class="who">${esc(w.name)}</div><div class="when">${ago(T(p.created_at))}</div></div></div>
+    ${p.text?`<p>${esc(p.text)}</p>`:''}
+    ${p.link?`<a class="linkbox" href="${esc(p.link)}" target="_blank" rel="noopener">▶ ${esc(p.link)}</a>`:''}
+    <div class="actions"><button class="ghost" onclick="like(${p.id})">${D.liked.has(p.id)?'👍 Liked':'👍'} ${p.likes}</button>
+    ${p.user_id===uid()?`<button class="ghost" onclick="delPost(${p.id})">Delete</button>`:`<button class="ghost" onclick="flag('post',${p.id})">Report</button>`}</div>
+  </div>`}).join('')}`;
+}
+async function addPost(b){
+  if(!canPost())return;const text=$('pt').value.trim();let link=$('pl').value.trim();
+  if(!text&&!link)return toast('Write something first');
+  if(link&&!/^https?:\/\//i.test(link))link='https://'+link;
+  busy(b,true,'Posting...');
+  const {error}=await sb.from('posts').insert({text:text||null,link:link||null});
+  busy(b,false);
+  if(error)return toast('Could not post: '+error.message);
+  $('pt').value='';$('pl').value='';toast('Posted');loadPosts();
+}
+async function like(id){
+  if(!canPost())return;const p=D.posts.find(x=>x.id===id);
+  if(D.liked.has(id)){await sb.from('post_likes').delete().eq('post_id',id).eq('user_id',uid());D.liked.delete(id);p.likes=Math.max(0,p.likes-1)}
+  else{const {error}=await sb.from('post_likes').insert({post_id:id});if(error&&error.code!=='23505')return toast(error.message);D.liked.add(id);if(!error)p.likes++}
+  render();
+}
+async function delPost(id){if(!confirm('Delete this post?'))return;const {error}=await sb.from('posts').delete().eq('id',id);if(error)return toast(error.message);loadPosts()}
+
+/* ---------- JOBS & REVIEWS ---------- */
+async function loadJobs(){
+  const [c,r,j]=await Promise.all([
+    sb.from('companies').select('id,name').order('name'),
+    sb.from('reviews_public').select('*').order('created_at',{ascending:false}),
+    sb.from('jobs').select('*').order('created_at',{ascending:false}).limit(100)]);
+  const err=c.error||r.error||j.error;if(err){console.error(err);return}
+  D.companies=c.data;D.reviews=r.data;D.jobs=j.data;
+  if(S.tab==='jobs')render();
+}
+function reviewsOf(cid){return D.reviews.filter(r=>r.company_id===cid)}
+function avg(list,k){if(!list.length)return 0;return list.reduce((s,x)=>s+(k?x[k]:CATS.reduce((a,[q])=>a+x[q],0)/CATS.length),0)/list.length}
+function cname(id){const c=(D.companies||[]).find(x=>x.id===id);return c?c.name:'Company'}
+function jobCard(j){return `<div class="card"><span class="hiring" style="margin-top:0">Hiring</span> <b>${esc(cname(j.company_id))}</b>
+  <p style="margin:6px 0 0;font-weight:600">${esc(j.title)}</p>
+  ${j.details?`<p style="margin:4px 0 0">${esc(j.details)}</p>`:''}
+  <div class="facts">${j.pay?`<span><b>Pay:</b> ${esc(j.pay)}</span>`:''}${j.home?`<span><b>Home time:</b> ${esc(j.home)}</span>`:''}${j.contact?`<span><b>Apply:</b> ${esc(j.contact)}</span>`:''}<span>${ago(T(j.created_at))}</span></div>
+  <div class="actions"><button class="ghost" onclick="flag('job',${j.id})">Report</button></div></div>`}
+function jobs(){
+  if(!D.companies)return '<div class="card empty">Loading...</div>';
+  return `<h2 class="section">Jobs & reviews</h2>
+  <p class="note">Reviews post as "Verified driver" so nobody gets called out at work.</p>
+  <div class="actions" style="margin:0 0 20px"><button class="btn" onclick="reviewForm(0)">Write a review</button><button class="btn alt" onclick="jobForm()">Post a job</button></div>
+  <h3 class="section" style="font-size:22px">Open jobs</h3>
+  ${D.jobs.length?D.jobs.map(jobCard).join(''):'<div class="card empty">No open jobs posted yet.</div>'}
+  <h3 class="section" style="font-size:22px;margin-top:20px">Company ratings</h3>
+  ${D.companies.length?'':'<div class="card empty">No companies yet. Write the first review.</div>'}
+  ${D.companies.map(c=>{const rv=reviewsOf(c.id);return`<div class="card">
+    <h3>${esc(c.name)}</h3>
+    <div>${rv.length?`<span class="stars">${stars(avg(rv))}</span> <span class="addr">${avg(rv).toFixed(1)} from ${rv.length} review${rv.length>1?'s':''}</span>`:'<span class="addr">No reviews yet</span>'}</div>
+    <div class="actions"><button class="ghost" onclick="company(${c.id})">Read reviews</button><button class="ghost" onclick="reviewForm(${c.id})">Write a review</button></div>
+  </div>`}).join('')}`;
+}
+function company(id){
+  const c=D.companies.find(x=>x.id===id);if(!c)return;const rv=reviewsOf(id);
+  openSheet(head(esc(c.name))+`
+  ${D.jobs.filter(j=>j.company_id===id).map(jobCard).join('')}
+  ${rv.length?`<div class="scores">${CATS.map(([k,l])=>`<span>${l}</span><span class="meter"><i style="width:${avg(rv,k)/5*100}%"></i></span><span>${avg(rv,k).toFixed(1)}</span>`).join('')}</div>`:'<p class="note">No reviews yet. Be the first.</p>'}
+  <div style="margin:16px 0"><button class="btn block" onclick="reviewForm(${id})">Write a review</button></div>
+  ${rv.map(r=>`<div class="report"><div class="top"><span class="stars">${stars(CATS.reduce((a,[q])=>a+r[q],0)/5)}</span><span class="addr">${ago(T(r.created_at))}</span></div>
+    <p style="margin:6px 0 0">${esc(r.text)}</p><div class="actions"><span class="addr">Verified driver</span><button class="ghost" onclick="flag('review',${r.id})">Report</button></div></div>`).join('')}`);
+}
+function companyPicker(){return `<label for="cp">Company</label>
+  <select id="cp" onchange="$('cnWrap').style.display=this.value==='__new'?'block':'none'">
+    <option value="">Choose a company</option>${D.companies.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('')}
+    <option value="__new">+ Add a company that's not listed</option></select>
+  <div id="cnWrap" style="display:none"><label for="cn">Company name</label><input type="text" id="cn" maxlength="100"></div>`}
+async function resolveCompany(){
+  const v=$('cp').value;
+  if(v!=='__new')return v?+v:null;
+  const n=$('cn').value.trim();if(n.length<2)return null;
+  const found=D.companies.find(x=>x.name.toLowerCase()===n.toLowerCase());if(found)return found.id;
+  const {data,error}=await sb.from('companies').insert({name:n}).select('id,name').single();
+  if(!error){D.companies.push(data);return data.id}
+  const r=await sb.from('companies').select('id,name').ilike('name',n).maybeSingle();
+  if(r.data){D.companies.push(r.data);return r.data.id}
+  toast(error.message);return null;
+}
+function reviewForm(id){
+  if(!canPost())return;
+  const c=id&&D.companies.find(x=>x.id===id);
+  openSheet(head(c?'Review '+esc(c.name):'Write a review')+`${c?'':companyPicker()}
+  <label>Rate each one</label>
+  <div class="rate">${CATS.map(([k,l])=>`<label for="r_${k}" style="margin:0;font-weight:500">${l}</label><select id="r_${k}">${[5,4,3,2,1].map(v=>`<option value="${v}">${v} ★</option>`).join('')}</select>`).join('')}</div>
+  <label for="rt">Your review</label>
+  <textarea id="rt" maxlength="1000" placeholder="What should other drivers know?"></textarea>
+  <p class="note" style="margin-top:8px">Keep it about the company. Don't name individual people. Your name is not shown.</p>
+  <button class="btn block" onclick="submitReview(${c?c.id:0},this)">Post review</button>`);
+}
+async function submitReview(id,b){
+  const text=$('rt').value.trim();
+  const row={text};CATS.forEach(([k])=>row[k]=+$('r_'+k).value);
+  if(!id&&!$('cp').value)return toast('Choose a company');
+  if(!text)return toast('Write a few words first');
+  busy(b,true,'Posting...');
+  const cid=id||await resolveCompany();
+  if(!cid){busy(b,false);return toast('Choose a company')}
+  row.company_id=cid;
+  const {error}=await sb.from('reviews').insert(row);
+  busy(b,false);
+  if(error)return toast(error.code==='23505'?'You already reviewed this company':'Could not post: '+error.message);
+  await loadJobs();company(cid);toast('Review posted');
+}
+function jobForm(){
+  if(!canPost())return;
+  openSheet(head('Post a job')+companyPicker()+`
+  <label for="jt">Job title</label><input type="text" id="jt" maxlength="150" placeholder="Example: Local fuel hauler, day shift">
+  <label for="jdt">Details</label><textarea id="jdt" maxlength="2000" placeholder="Endorsements needed, schedule, benefits..."></textarea>
+  <label for="jpay">Pay (optional)</label><input type="text" id="jpay" maxlength="100" placeholder="Example: $28/hr or per load">
+  <label for="jh">Home time</label><select id="jh"><option>Home daily</option><option>Home weekly</option><option>Regional</option><option>OTR</option></select>
+  <label for="jcx">How to apply</label><input type="text" id="jcx" maxlength="200" placeholder="Phone, email, or website">
+  <button class="btn block" style="margin-top:14px" onclick="submitJob(this)">Post job</button>`);
+}
+async function submitJob(b){
+  const title=$('jt').value.trim();
+  if(!$('cp').value)return toast('Choose a company');
+  if(title.length<2)return toast('Add a job title');
+  busy(b,true,'Posting...');
+  const cid=await resolveCompany();
+  if(!cid){busy(b,false);return toast('Choose a company')}
+  const {error}=await sb.from('jobs').insert({company_id:cid,title,details:$('jdt').value.trim()||null,pay:$('jpay').value.trim()||null,home:$('jh').value,contact:$('jcx').value.trim()||null});
+  busy(b,false);
+  if(error)return toast('Could not post: '+error.message);
+  closeSheet();toast('Job posted');loadJobs();
+}
+
+/* ---------- MEMORIAL ---------- */
+async function loadTributes(){
+  const {data,error}=await sb.from('tributes').select('id,name,company,years,message,approved,created_at,tribute_candles(count)').order('created_at',{ascending:false});
+  if(error){console.error(error);return}
+  D.tributes=data.map(t=>({...t,candles:t.tribute_candles?.[0]?.count||0}));
+  if(S.tab==='memorial')render();
+}
+function memorial(){
+  if(!D.tributes)return '<div class="card empty">Loading...</div>';
+  return `<h2 class="section">Gone but not forgotten</h2>
+  <p class="note">Honoring the fuel haulers we've lost. Tributes are reviewed by an admin before they appear.</p>
+  ${D.tributes.length?D.tributes.map(t=>`<div class="card tribute"><h3>${esc(t.name)}${t.approved?'':'<span class="tag">waiting for review</span>'}</h3>
+    <div class="addr">${esc([t.company,t.years].filter(Boolean).join(', '))}</div>
+    ${t.message?`<p>${esc(t.message)}</p>`:''}
+    ${t.approved?`<div class="actions"><button class="ghost" onclick="candle(${t.id})">🕯 Light a candle (${t.candles})</button></div>`:''}</div>`).join('')
+  :'<div class="card empty">No tributes yet.</div>'}
+  <div class="card"><h3 class="section">Add a tribute</h3>
+    <label for="tn">Driver's name</label><input type="text" id="tn" maxlength="100">
+    <label for="tco">Company they drove for</label><input type="text" id="tco" maxlength="100">
+    <label for="ty">Years driving (optional)</label><input type="text" id="ty" maxlength="50" placeholder="Example: 1998 to 2025">
+    <label for="tm">A few words</label><textarea id="tm" maxlength="2000"></textarea>
+    <div style="margin-top:12px"><button class="btn" onclick="addTribute(this)">Send for review</button></div>
+  </div>`;
+}
+async function addTribute(b){
+  if(!canPost())return;const name=$('tn').value.trim();if(name.length<2)return toast("Add the driver's name");
+  busy(b,true,'Sending...');
+  const {error}=await sb.from('tributes').insert({name,company:$('tco').value.trim()||null,years:$('ty').value.trim()||null,message:$('tm').value.trim()||null});
+  busy(b,false);
+  if(error)return toast('Could not send: '+error.message);
+  ['tn','tco','ty','tm'].forEach(i=>$(i).value='');toast('Sent. It will appear once an admin approves it.');loadTributes();
+}
+async function candle(id){
+  if(!D.session){toast('Sign in first');go('me');return}
+  const {error}=await sb.from('tribute_candles').insert({tribute_id:id});
+  if(error)return toast(error.code==='23505'?'You already lit a candle':error.message);
+  const t=D.tributes.find(x=>x.id===id);if(t)t.candles++;render();
+}
+
+/* ---------- ME: sign in, join, profile ---------- */
+function me(){
+  if(D.recovery)return `<div class="card"><h2 class="section">Set a new password</h2>
+    <label for="np">New password</label><input type="password" id="np" autocomplete="new-password">
+    <button class="btn block" style="margin-top:14px" onclick="setPw(this)">Save password</button></div>`;
+  if(D.session){
+    if(!D.me)return '<div class="card empty">Loading your profile...</div>';
+    const m=D.me;
+    return `<div class="card"><div class="profTop">${av(m.name,m.photo_url,96)}
+      <div><label class="btn alt photoBtn">${m.photo_url?'Change photo':'Add a photo'}<input type="file" accept="image/*" onchange="pickPhoto(event)" hidden></label>
+      ${m.photo_url?'<button class="ghost" style="margin-left:6px" onclick="removePhoto()">Remove</button>':''}
+      <p class="note" style="margin:8px 0 0">Your truck, your dog, your family. Anything you like.</p></div></div>
+      <h2 class="section">${esc(m.name)}</h2>
+      <div class="addr">${esc(m.company)}, ${esc(m.region)}</div>
+      <p>Endorsements: ${m.endorsements&&m.endorsements.length?m.endorsements.map(esc).join(', '):'none listed'}</p>
+      ${m.approved?'<span class="hiring" style="margin-top:0">Verified driver</span>':'<div class="card" style="background:var(--bg);margin:10px 0 0"><b>Waiting for approval.</b> An admin checks every new driver before they can post. You can still look around.</div>'}
+    </div>
+    <button class="btn alt" onclick="signOut()">Sign out</button>`;
+  }
+  if(D.checkEmail)return `<div class="card"><h2 class="section">Check your email</h2>
+    <p>We sent a link to <b>${esc(D.checkEmail)}</b>. Tap it to confirm your account, then come back here and sign in.</p>
+    <button class="btn alt" onclick="D.checkEmail=null;S.auth='in';render()">Go to sign in</button></div>`;
+  if(S.auth==='in')return `<div class="card"><h2 class="section">Sign in</h2>
+    <label for="le">Email</label><input type="email" id="le" autocomplete="email">
+    <label for="lp">Password</label><input type="password" id="lp" autocomplete="current-password" onkeydown="if(event.key==='Enter')signIn()">
+    <button class="btn block" style="margin-top:14px" onclick="signIn(this)">Sign in</button>
+    <div class="actions" style="margin-top:12px"><button class="ghost" onclick="forgot()">Forgot password?</button><button class="ghost" onclick="S.auth='up';render()">New here? Join</button></div></div>`;
+  return `<div class="card"><h2 class="section">Join fuelhaulers.live</h2>
+    <p class="note">Drivers only. After you join, an admin approves your account before you can post.</p>
+    <label for="jn">Your name</label><input type="text" id="jn" maxlength="100" autocomplete="name">
+    <label for="jc">Company you drive for</label><input type="text" id="jc" maxlength="100">
+    <label for="jr">Home area</label><select id="jr">${REGIONS.map(r=>`<option>${r}</option>`).join('')}</select>
+    <label>Endorsements</label>
+    <label class="check"><input type="checkbox" value="Tanker (N)" class="je"> Tanker (N)</label>
+    <label class="check"><input type="checkbox" value="HazMat (H)" class="je"> HazMat (H)</label>
+    <label class="check"><input type="checkbox" value="Tanker + HazMat (X)" class="je"> Tanker + HazMat (X)</label>
+    <label for="jem">Email</label><input type="email" id="jem" autocomplete="email">
+    <label for="jpw">Password (at least 8 characters)</label><input type="password" id="jpw" autocomplete="new-password">
+    <label class="check"><input type="checkbox" id="jd"> I hold a CDL and haul fuel for a living.</label>
+    <button class="btn block" onclick="signUp(this)">Join</button>
+    <div class="actions" style="margin-top:12px"><button class="ghost" onclick="S.auth='in';render()">Already joined? Sign in</button></div></div>`;
+}
+async function signUp(b){
+  const name=$('jn').value.trim(),company=$('jc').value.trim(),email=$('jem').value.trim(),password=$('jpw').value;
+  if(!name||!company)return toast('Add your name and company');
+  if(!email)return toast('Add your email');
+  if(password.length<8)return toast('Password needs at least 8 characters');
+  if(!$('jd').checked)return toast('This app is for fuel haulers only');
+  const region=$('jr').value,endorsements=[...document.querySelectorAll('.je:checked')].map(x=>x.value);
+  busy(b,true,'Joining...');
+  const {data,error}=await sb.auth.signUp({email,password,options:{data:{name,company,region,endorsements},emailRedirectTo:location.origin}});
+  busy(b,false);
+  if(error)return toast(error.message);
+  if(data.user&&data.user.identities&&data.user.identities.length===0){S.auth='in';render();return toast('That email already has an account. Sign in instead.')}
+  S.region=region;S.city=region;save();
+  if(!data.session){D.checkEmail=email;render()}
+}
+async function signIn(b){
+  const email=$('le').value.trim(),password=$('lp').value;
+  if(!email||!password)return toast('Enter your email and password');
+  busy(b,true,'Signing in...');
+  const {error}=await sb.auth.signInWithPassword({email,password});
+  busy(b,false);
+  if(error)return toast(/confirm/i.test(error.message)?'Confirm your email first. Check your inbox.':error.message);
+  toast('Signed in');
+}
+async function forgot(){
+  const email=($('le')&&$('le').value.trim())||prompt('Your email address');if(!email)return;
+  const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin});
+  toast(error?error.message:'Check your email for a reset link');
+}
+async function setPw(b){
+  const p=$('np').value;if(p.length<8)return toast('Use at least 8 characters');
+  busy(b,true);const {error}=await sb.auth.updateUser({password:p});busy(b,false);
+  if(error)return toast(error.message);D.recovery=false;render();toast('Password updated');
+}
+async function signOut(){await sb.auth.signOut();D.me=null;D.liked=new Set();render()}
+function pickPhoto(e){
+  const f=e.target.files[0];if(!f)return;
+  if(!f.type.startsWith('image/'))return toast('Pick a photo file');
+  const rd=new FileReader();
+  rd.onload=()=>{const img=new Image();img.onload=()=>{
+    const s=256,c=document.createElement('canvas');c.width=c.height=s;
+    const m=Math.min(img.width,img.height);
+    c.getContext('2d').drawImage(img,(img.width-m)/2,(img.height-m)/2,m,m,0,0,s,s);
+    c.toBlob(uploadPhoto,'image/jpeg',.82);
+  };img.onerror=()=>toast('That photo could not be opened');img.src=rd.result};
+  rd.readAsDataURL(f);
+}
+async function uploadPhoto(blob){
+  if(!blob)return toast('That photo could not be opened');
+  toast('Uploading...');
+  const path=uid()+'/avatar.jpg';
+  const {error}=await sb.storage.from('avatars').upload(path,blob,{upsert:true,contentType:'image/jpeg'});
+  if(error)return toast('Upload failed: '+error.message);
+  const url=sb.storage.from('avatars').getPublicUrl(path).data.publicUrl+'?v='+Date.now();
+  const r=await sb.from('profiles').update({photo_url:url}).eq('id',uid());
+  if(r.error)return toast(r.error.message);
+  D.me.photo_url=url;person(D.me);render();toast('Photo updated');
+}
+async function removePhoto(){
+  await sb.storage.from('avatars').remove([uid()+'/avatar.jpg']);
+  await sb.from('profiles').update({photo_url:null}).eq('id',uid());
+  D.me.photo_url=null;person(D.me);render();
+}
+
+/* ---------- DRAWING THE SCREEN ---------- */
+function render(){
+  const a=document.activeElement,fid=a&&a.id,pos=a&&a.selectionStart,keep={};
+  document.querySelectorAll('#app input[id],#app textarea[id]').forEach(e=>{if(e.type!=='file'&&e.type!=='checkbox')keep[e.id]=e.value});
+  renderTabs();
+  $('app').innerHTML=({racks,chat,feed,jobs,memorial,me}[S.tab]||racks)();
+  for(const k in keep){const e=$(k);if(e&&e.type!=='file'&&e.type!=='checkbox')e.value=keep[k]}
+  if(fid&&$(fid)&&$('app').contains($(fid))){const e=$(fid);e.focus();try{if(pos!=null)e.setSelectionRange(pos,pos)}catch(err){}}
+  const m=$('msgs');if(m)m.scrollTop=m.scrollHeight;
+}
+
+async function loadMe(){
+  if(!uid()){D.me=null;return}
+  const {data,error}=await sb.from('profiles').select('*').eq('id',uid()).maybeSingle();
+  if(error)console.error(error);
+  D.me=data||null;person(D.me);
+}
+sb.auth.onAuthStateChange((ev,session)=>{
+  D.session=session;
+  if(ev==='PASSWORD_RECOVERY'){D.recovery=true;S.tab='me'}
+  setTimeout(async()=>{await loadMe();if(ev==='SIGNED_IN'||ev==='SIGNED_OUT')loadPosts();render()},0);
+});
+
+sb.channel('live')
+  .on('postgres_changes',{event:'INSERT',schema:'public',table:'reports'},({new:r})=>{
+    if(D.reports.some(x=>x.id===r.id))return;D.reports.unshift({...r,ok:0});if(S.tab==='racks')render();
+  })
+  .on('postgres_changes',{event:'INSERT',schema:'public',table:'chat_messages'},async({new:m})=>{
+    const list=D.chats[m.region];if(!list||list.some(x=>x.id===m.id))return;
+    if(!D.people[m.user_id]){const {data}=await sb.from('profiles').select('id,name,photo_url').eq('id',m.user_id).maybeSingle();person(data)}
+    list.push(m);if(S.tab==='chat'&&S.city===m.region)render();
+  })
+  .on('postgres_changes',{event:'INSERT',schema:'public',table:'posts'},()=>loadPosts())
+  .subscribe();
+
+render();
+(async()=>{
+  const {data}=await sb.auth.getSession();D.session=data.session;await loadMe();render();
+  loadReports();loadPosts();loadJobs();loadTributes();
+})();
+setInterval(()=>{if(S.tab==='racks')render()},60000);
+setInterval(loadReports,5*60000);
+</script>
+</body>
+</html>
