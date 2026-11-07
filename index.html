@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://fuelhaulers.live/">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/manifest.webmanifest">
+<link rel="manifest" href="/manifest.webmanifest?v=2">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="FuelHaulers">
@@ -299,6 +299,19 @@ a{color:var(--orange2)}
 /* page */
 main{max-width:1120px}
 .rhero{text-align:center;padding:18px 10px 6px}
+.instCard{display:flex;align-items:center;gap:12px;margin:6px 0 16px;padding:12px 14px;border:1px solid rgba(243,241,232,.25);border-radius:8px;background:rgba(243,241,232,.06);color:var(--chalk)}
+.instCard img{width:44px;height:44px;border-radius:10px;flex-shrink:0}
+.instCard p{margin:0;font-size:14px;flex:1;min-width:0}
+.instCard .x{background:transparent;color:var(--chalk);flex-shrink:0}
+.instSteps{list-style:none;padding:0;margin:0;counter-reset:st}
+.instSteps li{counter-increment:st;display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid rgba(0,0,0,.1);font-size:17px;line-height:1.4}
+.instSteps li:before{content:counter(st);flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+.instIco{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:2px solid #2A7DE1;border-radius:6px;color:#2A7DE1;vertical-align:middle;margin:0 2px}
+.instNote{background:#FFF4D6;color:#5A4300;border-radius:6px;padding:10px 12px;font-size:15px;margin:0 0 12px}
+.joinCard{margin:6px 0 16px;padding:14px 16px;border:2px solid var(--orange);border-radius:8px;background:rgba(228,87,46,.12);color:var(--chalk);text-align:center}
+.joinCard p{margin:0 0 10px;font-size:15px}
+.joinCard .actions{justify-content:center;flex-wrap:wrap}
+.joinCard .ghost{color:var(--chalk);border-color:rgba(243,241,232,.4)}
 .rhero h1{font-size:clamp(2.4rem,6vw,4rem);line-height:1;color:var(--chalk)}
 .rhero h1 span{color:var(--orange)}
 .rhero p{margin:12px auto 0;max-width:560px;color:var(--cyan)}
@@ -460,15 +473,7 @@ main>input[type=text],.regionSel{background:var(--navyDeep);color:var(--chalk);b
 #tabs.pulse .navbtn:nth-child(6) .in{animation-delay:2s}
 #tabs.pulse .navbtn:nth-child(7) .in{animation-delay:2.4s}
 #tabs.pulse .navbtn:nth-child(8) .in{animation-delay:2.8s}
-.recapBtn{display:flex;align-items:center;gap:14px;margin:14px 0;padding:18px 20px;border-radius:16px;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--orange),var(--orangeDeep));border:3px solid var(--orange2);animation:recapFlash 1.6s ease-in-out infinite}
-.recapBtn span{flex:1;display:flex;flex-direction:column;line-height:1.1}
-.recapBtn b{font-size:24px;letter-spacing:.04em}
-.recapBtn small{font-size:14px;opacity:.92;margin-top:4px}
-.recapBtn .arr{animation:recapNudge 1.6s ease-in-out infinite}
-.recapBtn:active{transform:scale(.97)}
-@keyframes recapFlash{0%,100%{box-shadow:0 0 0 0 rgba(244,185,66,.75);filter:brightness(1)}50%{box-shadow:0 0 0 10px rgba(244,185,66,0),0 0 24px rgba(244,185,66,.6);filter:brightness(1.18)}}
-@keyframes recapNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
-@media (prefers-reduced-motion:reduce){.stamp{transform:none}#tabs.pulse .navbtn .in{animation:none}.recapBtn,.recapBtn .arr{animation:none}}
+@media (prefers-reduced-motion:reduce){.stamp{transform:none}#tabs.pulse .navbtn .in{animation:none}}
 
 </style>
 </head>
@@ -488,7 +493,7 @@ main>input[type=text],.regionSel{background:var(--navyDeep);color:var(--chalk);b
 {"symbols":[{"proName":"TVC:USOIL","title":"WTI Crude"},{"proName":"TVC:UKOIL","title":"Brent Crude"},{"proName":"AMEX:XLE","title":"Energy Stocks"},{"proName":"NYSE:VLO","title":"Valero"},{"proName":"NYSE:PSX","title":"Phillips 66"},{"proName":"NYSE:XOM","title":"ExxonMobil"},{"proName":"NYSE:CVX","title":"Chevron"},{"proName":"NYSE:MPC","title":"Marathon Petroleum"}],"showSymbolLogo":false,"isTransparent":false,"displayMode":"adaptive","colorTheme":"dark","locale":"en"}
 </script></div></div>
 <main id="app"><noscript><p style="padding:20px">fuelhaulers.live shows live rack reports from Texas and Utah fuel terminals, city chat, carrier reviews, and jobs for fuel haulers. Please turn on JavaScript to use it.</p></noscript></main>
-<footer class="site-foot"><a href="/recap"><b>HOS Recap Calculator</b></a><br><a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html">Terms of Use</a> &nbsp;|&nbsp; <a href="mailto:support@fuelhaulers.live">Contact</a><br>© 2026 fuelhaulers.live &nbsp;·&nbsp; Never post while driving.<br><span style="font-size:12px">Weather: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> and the National Weather Service</span></footer>
+<footer class="site-foot"><a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html">Terms of Use</a> &nbsp;|&nbsp; <a href="mailto:support@fuelhaulers.live">Contact</a><br>© 2026 fuelhaulers.live &nbsp;·&nbsp; Never post while driving.<br><span style="font-size:12px">Weather: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> and the National Weather Service</span></footer>
 <div class="sheetWrap" id="sheetWrap"><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
 <div class="toast" id="toast"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -649,6 +654,63 @@ const TERMINALS=[
 
 /* screen settings remembered on this phone (not driver data) */
 let S={tab:'racks',region:'San Antonio',city:'San Antonio',scaleRegion:'All',q:'',auth:'in'};
+function hadAccount(){try{return localStorage.getItem('fhl-member')==='1'}catch(e){return false}}
+S.auth=hadAccount()?'in':'up';
+function joinNow(){S.auth='up';go('me')}
+/* ---------- INSTALL AS AN APP ---------- */
+let instEvt=null;
+const UA=navigator.userAgent||'';
+const IS_IOS=/iPhone|iPad|iPod/.test(UA)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+const IS_ANDROID=/Android/.test(UA);
+const IN_APP=/FBAN|FBAV|FB_IAB|Instagram|Messenger|Line\/|TikTok|musical_ly|Snapchat/i.test(UA);
+function isApp(){return (window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true}
+function instHidden(){try{return Date.now()<(+localStorage.getItem('fhl-inst-hide')||0)}catch(e){return false}}
+function instHide(){try{localStorage.setItem('fhl-inst-hide',String(Date.now()+14*864e5))}catch(e){}render()}
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();instEvt=e;if(S.tab==='racks'||S.tab==='me')render()});
+window.addEventListener('appinstalled',()=>{instEvt=null;track('app_installed');closeSheet();toast('Installed! Look for the orange FH icon on your home screen.');render()});
+if('serviceWorker' in navigator&&location.protocol==='https:')window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
+function installCard(){
+  if(isApp()||instHidden())return '';
+  return `<div class="instCard"><img src="/icon-192.png" alt=""><p><b>Get the app.</b> Put fuelhaulers.live on your home screen. Free, no app store.</p><button class="btn sm" onclick="installApp()">Install</button><button class="x" onclick="instHide()" aria-label="Hide for now">✕</button></div>`;
+}
+async function installApp(){
+  track('install_tap',{os:IS_IOS?'ios':IS_ANDROID?'android':'other',in_app:IN_APP});
+  if(instEvt&&!IN_APP){const e=instEvt;instEvt=null;e.prompt();try{const r=await e.userChoice;track('install_choice',{outcome:r.outcome})}catch(x){}return}
+  const share=`<span class="instIco" aria-label="Share button"><svg width="16" height="18" viewBox="0 0 16 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12V1M4 5l4-4 4 4M3 8H1.5v9h13V8H13"/></svg></span>`;
+  let body;
+  if(IN_APP){
+    body=`<p class="instNote">You opened this inside ${/Instagram/i.test(UA)?'Instagram':/TikTok|musical_ly/i.test(UA)?'TikTok':'Facebook'}. Apps can only be installed from your phone's regular browser.</p>
+    <ol class="instSteps">
+      <li><span>Tap the <b>⋯</b> or <b>⋮</b> button at the top or bottom right of this screen.</span></li>
+      <li><span>Tap <b>${IS_IOS?'Open in Safari':'Open in Chrome'}</b> (it may say <b>Open in browser</b>).</span></li>
+      <li><span>When the site opens, tap <b>Install</b> again.</span></li>
+    </ol>
+    <button class="btn block" style="margin-top:10px" onclick="copyLink()">Or copy the link</button>`;
+  }else if(IS_IOS){
+    body=`<ol class="instSteps">
+      <li><span>Tap the Share button ${share} ${/CriOS/.test(UA)?'at the <b>top right</b>, next to the web address.':'at the <b>bottom</b> of the screen (on iPad it is at the top).'}</span></li>
+      <li><span>Scroll down and tap <b>Add to Home Screen</b>. You may need to tap <b>More</b> or <b>Edit Actions</b> to find it.</span></li>
+      <li><span>Tap <b>Add</b> at the top right.</span></li>
+      <li><span>Done. Open it from the orange <b>FH</b> icon on your home screen.</span></li>
+    </ol>`;
+  }else if(IS_ANDROID){
+    body=`<ol class="instSteps">
+      <li><span>Tap the <b>⋮</b> menu at the top right of Chrome.</span></li>
+      <li><span>Tap <b>Add to Home screen</b> or <b>Install app</b>.</span></li>
+      <li><span>Tap <b>Install</b>.</span></li>
+      <li><span>Done. Open it from the orange <b>FH</b> icon on your home screen.</span></li>
+    </ol>
+    <p class="note" style="margin-top:10px">Using Samsung Internet? Tap <b>☰</b> at the bottom right, then <b>Add page to</b>, then <b>Home screen</b>.</p>`;
+  }else{
+    body=`<p style="font-size:17px">Open <b>fuelhaulers.live</b> on your phone and tap <b>Install</b> there. Works on iPhone and Android.</p>
+    <button class="btn block" style="margin-top:10px" onclick="copyLink()">Copy the link</button>`;
+  }
+  openSheet(head('Install the app')+body);
+}
+function copyLink(){const u='https://fuelhaulers.live/?install';
+  try{navigator.clipboard.writeText(u).then(()=>toast('Link copied. Paste it in your browser.'),()=>prompt('Copy this link:',u))}catch(e){prompt('Copy this link:',u)}}
+if(/[?&]install\b/.test(location.search)&&!isApp())setTimeout(()=>installApp(),1200);
+function signInNow(){S.auth='in';go('me')}
 try{Object.assign(S,JSON.parse(localStorage.getItem('fhl-ui')||'{}'))}catch(e){}
 try{localStorage.removeItem('fhl-demo-v1')}catch(e){}
 if(S.tab==='feed')S.tab='scales';
@@ -679,7 +741,7 @@ function av(name,photo,sz=32){
 function busy(b,on,label){if(!b)return;b.disabled=on;if(on){b.dataset.l=b.textContent;b.textContent=label||'Working...'}else if(b.dataset.l)b.textContent=b.dataset.l}
 function uid(){return D.session?.user?.id}
 function canPost(){
-  if(!D.session){closeSheet();toast('Sign in first');go('me');return false}
+  if(!D.session){closeSheet();toast(hadAccount()?'Sign in to post':'Join free to post. It takes 1 minute.');S.auth=hadAccount()?'in':'up';go('me');return false}
   if(!D.me||!D.me.approved){toast('Posting is turned off for your account. Email support@fuelhaulers.live');return false}
   return true;
 }
@@ -759,7 +821,7 @@ async function unblock(id){
 }
 function renderTabs(){
   const n=adminCount(),tabs=D.me&&D.me.is_admin?[...TABS,['admin',n?`Admin (${n})`:'Admin',n?`Admin (${n})`:'Admin']]:TABS;
-  const html=tabs.map(([k,l,s])=>{if(k==='chat'&&D.unread){l=`${l} (${D.unread})`;s=`${s} (${D.unread})`}if(k==='dm'){const u=dmUnread();if(u){l=`${l} (${u})`;s=`${s} (${u})`}}return [k,l,s]}).map(([k,l,s])=>`<button class="navbtn${k==='dm'&&dmUnread()?' dmNew':''}" aria-current="${S.tab===k}" onclick="go('${k}')"><span class="in"><svg viewBox="0 0 24 24" fill="url(#og)" aria-hidden="true">${ICONS[k]}</svg><span class="lb"><span class="full">${l}</span><span class="short">${s}</span></span></span></button>`).join('');
+  const html=tabs.map(([k,l,s])=>{if(k==='chat'&&D.unread){l=`${l} (${D.unread})`;s=`${s} (${D.unread})`}if(k==='dm'){const u=dmUnread();if(u){l=`${l} (${u})`;s=`${s} (${u})`}}if(k==='me'&&!D.session){l=hadAccount()?'Sign in':'Join free';s=hadAccount()?'Sign in':'Join'}return [k,l,s]}).map(([k,l,s])=>`<button class="navbtn${k==='dm'&&dmUnread()?' dmNew':''}" aria-current="${S.tab===k}" onclick="go('${k}')"><span class="in"><svg viewBox="0 0 24 24" fill="url(#og)" aria-hidden="true">${ICONS[k]}</svg><span class="lb"><span class="full">${l}</span><span class="short">${s}</span></span></span></button>`).join('');
   if(html!==lastTabs){$('tabs').innerHTML=html;lastTabs=html}
   dmAlertShow();
 }
@@ -812,7 +874,7 @@ function racks(){
   const q=(S.q||'').toLowerCase(),mine=myActive();
   const list=TERMINALS.filter(t=>(S.region==='All'||t.region===S.region)&&(!q||(t.name+' '+t.addr+' '+t.id).toLowerCase().includes(q)))
     .sort((a,b)=>((fresh(latest(b.id))?1:0)-(fresh(latest(a.id))?1:0))||a.name.localeCompare(b.name));
-  return `<div class="rhero"><h1>Know the rack <span>before you roll.</span></h1><p>Live wait times from drivers at Texas and Utah fuel terminals. Built by fuel haulers, for fuel haulers.</p></div>
+  return `<div class="rhero"><h1>Know the rack <span>before you roll.</span></h1><p>Live wait times from drivers at Texas and Utah fuel terminals. Built by fuel haulers, for fuel haulers.</p></div>${installCard()}${D.session?'':`<div class="joinCard"><p><b>Drivers: join free.</b> Post rack reports, see who's waiting, chat with your city, and message other drivers.</p><div class="actions"><button class="btn" onclick="joinNow()">Join free</button><button class="ghost" onclick="signInNow()">I already have an account</button></div></div>`}
   <div class="wxSlot">${wxTicker(S.region)}</div>
   ${mine?`<div class="card myspot">
       <span class="stamp" style="color:var(--navy)">Your spot</span>
@@ -1898,7 +1960,7 @@ function me(){
   if(D.session){
     if(!D.me)return '<div class="card empty">Loading your profile...</div>';
     const m=D.me;
-    return `<div class="card"><div class="profTop">${av(m.name,m.photo_url,96)}
+    return `${isApp()?'':`<button class="btn block" style="margin-bottom:14px" onclick="installApp()">📲 Install the app on this phone</button>`}<div class="card"><div class="profTop">${av(m.name,m.photo_url,96)}
       <div><label class="btn alt photoBtn">${m.photo_url?'Change photo':'Add a photo'}<input type="file" accept="image/*" onchange="pickPhoto(event)" hidden></label>
       ${m.photo_url?'<button class="ghost" style="margin-left:6px" onclick="removePhoto()">Remove</button>':''}
       <p class="note" style="margin:8px 0 0">Your truck, your dog, your family. Anything you like.</p></div></div>
@@ -1908,11 +1970,6 @@ function me(){
       <button class="btn alt" onclick="D.editing=true;render()">✎ Edit my profile</button>`}
       ${m.approved?'':'<div class="card" style="background:var(--bg);margin:10px 0 0"><b>Posting is turned off for your account.</b> If you think this is a mistake, email <a href="mailto:support@fuelhaulers.live">support@fuelhaulers.live</a>.</div>'}
     </div>
-    <a class="recapBtn" href="/recap" aria-label="Open HOS Recap Calculator">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-      <span><b>HOS RECAP</b><small>70 hr / 8 day calculator</small></span>
-      <svg class="arr" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-    </a>
     ${D.blocked.size?`<div class="card"><h3 class="section" style="font-size:20px">Blocked drivers</h3>${[...D.blocked].map(id=>`<div class="report" style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span>${esc((D.people[id]||{name:'Driver'}).name)}</span><button class="ghost" onclick="unblock('${id}')">Unblock</button></div>`).join('')}</div>`:''}
     <div class="actions"><button class="btn alt" onclick="signOut()">Sign out</button></div>
     <p class="note" style="margin-top:18px"><a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html">Terms of Use</a> &nbsp;|&nbsp; <a href="mailto:support@fuelhaulers.live">Contact support</a></p>
@@ -2178,6 +2235,7 @@ async function loadMe(){
 }
 sb.auth.onAuthStateChange((ev,session)=>{
   D.session=session;
+  if(session){try{localStorage.setItem('fhl-member','1')}catch(e){}}
   if(ev==='PASSWORD_RECOVERY'){D.recovery=true;S.tab='me'}
   setTimeout(async()=>{await loadMe();await loadBlocks();if(ev==='SIGNED_IN'||ev==='SIGNED_OUT')loadPosts();dmUser();if(!D.me||!D.me.is_admin){D.admin={};if(S.tab==='admin')S.tab='racks'}else loadAdmin();render()},0);
 });

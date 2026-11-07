@@ -1,14 +1,17 @@
 {
   "name": "fuelhaulers.live",
   "short_name": "FuelHaulers",
-  "description": "Know the rack before you roll. Live rack reports, city chat, and carrier reviews for fuel haulers.",
-  "start_url": "/",
+  "description": "Live rack wait times, city chat, and messages for fuel haulers.",
+  "id": "/",
+  "start_url": "/?source=app",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#08090a",
-  "theme_color": "#0a0a0b",
+  "orientation": "portrait",
+  "background_color": "#0F2436",
+  "theme_color": "#0F2436",
   "icons": [
     { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }
