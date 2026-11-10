@@ -299,6 +299,16 @@ a{color:var(--orange2)}
 /* page */
 main{max-width:1120px}
 .rhero{text-align:center;padding:18px 10px 6px}
+.shareLine{text-align:center;margin:-6px 0 14px}
+.shareLine button{background:transparent;border:0;color:var(--orange2);font:600 15px Inter,sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.shareBtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin:0 0 14px;padding:14px;border-radius:12px;border:2px solid var(--orange2);background:transparent;color:var(--chalk);font:700 17px Inter,sans-serif;cursor:pointer}
+.qrTabs{display:flex;gap:8px;margin:0 0 12px}
+.qrTabs button{flex:1;padding:10px;border-radius:8px;border:2px solid #d8d2c2;background:#fff;color:#2A2A28;font:600 15px Inter,sans-serif;cursor:pointer}
+.qrTabs button[aria-pressed=true]{border-color:var(--orange);background:#FDEBDD;color:#8A3A10}
+.qrBox{text-align:center}
+.qrBox img{width:min(260px,70vw);height:auto;border-radius:12px;border:1px solid #e3ddcf}
+.qrBox p{font-size:16px;margin:10px 0 14px}
+.qrBtns{display:grid;gap:10px}
 .instCard{display:flex;align-items:center;gap:12px;margin:6px 0 16px;padding:12px 14px;border:1px solid rgba(243,241,232,.25);border-radius:8px;background:rgba(243,241,232,.06);color:var(--chalk)}
 .instCard img{width:44px;height:44px;border-radius:10px;flex-shrink:0}
 .instCard p{margin:0;font-size:14px;flex:1;min-width:0}
@@ -501,7 +511,7 @@ main>input[type=text],.regionSel{background:var(--navyDeep);color:var(--chalk);b
 {"symbols":[{"proName":"TVC:USOIL","title":"WTI Crude"},{"proName":"TVC:UKOIL","title":"Brent Crude"},{"proName":"AMEX:XLE","title":"Energy Stocks"},{"proName":"NYSE:VLO","title":"Valero"},{"proName":"NYSE:PSX","title":"Phillips 66"},{"proName":"NYSE:XOM","title":"ExxonMobil"},{"proName":"NYSE:CVX","title":"Chevron"},{"proName":"NYSE:MPC","title":"Marathon Petroleum"}],"showSymbolLogo":false,"isTransparent":false,"displayMode":"adaptive","colorTheme":"dark","locale":"en"}
 </script></div></div>
 <main id="app"><noscript><p style="padding:20px">fuelhaulers.live shows live rack reports from Texas and Utah fuel terminals, city chat, carrier reviews, and jobs for fuel haulers. Please turn on JavaScript to use it.</p></noscript></main>
-<footer class="site-foot"><a href="/recap"><b>HOS Recap Calculator</b></a><br><a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html">Terms of Use</a> &nbsp;|&nbsp; <a href="mailto:support@fuelhaulers.live">Contact</a><br>© 2026 fuelhaulers.live &nbsp;·&nbsp; Never post while driving.<br><span style="font-size:12px">Weather: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> and the National Weather Service</span></footer>
+<footer class="site-foot"><a href="/recap"><b>HOS Recap Calculator</b></a> &nbsp;|&nbsp; <a href="#" onclick="shareApp();return false"><b>Share this app</b></a><br><a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html">Terms of Use</a> &nbsp;|&nbsp; <a href="mailto:support@fuelhaulers.live">Contact</a><br>© 2026 fuelhaulers.live &nbsp;·&nbsp; Never post while driving.<br><span style="font-size:12px">Weather: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> and the National Weather Service</span></footer>
 <div class="sheetWrap" id="sheetWrap"><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
 <div class="toast" id="toast"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -715,6 +725,18 @@ async function installApp(){
   }
   openSheet(head('Install the app')+body);
 }
+/* ---------- SHARE THE APP ---------- */
+const SHARE={app:{url:'https://fuelhaulers.live/?install&ref=share',qr:'/qr-app.png',name:'fuelhaulers.live',text:'Live rack wait times from other fuel haulers. Free app, no app store. Tap the link to install it:'},
+  recap:{url:'https://fuelhaulers.live/recap?install&ref=share',qr:'/qr-recap.png',name:'HOS Recap',text:'Free 70 hr / 8 day HOS recap calculator. Your hours stay on your phone. Tap to install it:'}};
+function shareApp(which){which=which||'app';const x=SHARE[which];track('share_open',{which});
+  openSheet(head('Share with a driver')+`<div class="qrTabs"><button type="button" aria-pressed="${which==='app'}" onclick="shareApp('app')">fuelhaulers.live</button><button type="button" aria-pressed="${which==='recap'}" onclick="shareApp('recap')">HOS Recap</button></div>
+  <div class="qrBox"><img src="${x.qr}" alt="QR code for ${x.name}" width="260" height="260"><p><b>Standing next to them?</b> Have them point their phone camera at this code.</p></div>
+  <div class="qrBtns"><button class="btn block" onclick="shareSend('${which}')">📤 Send the link (text, Facebook, anything)</button><button class="ghost block" onclick="shareCopy('${which}')">Copy the link</button></div>`)}
+async function shareSend(which){const x=SHARE[which];track('share_send',{which});
+  if(navigator.share){try{await navigator.share({title:x.name,text:x.text,url:x.url});return}catch(e){if(e&&e.name==='AbortError')return}}
+  location.href='sms:?&body='+encodeURIComponent(x.text+' '+x.url)}
+function shareCopy(which){const x=SHARE[which];track('share_copy',{which});
+  try{navigator.clipboard.writeText(x.url).then(()=>toast('Link copied. Paste it in a text or post.'),()=>prompt('Copy this link:',x.url))}catch(e){prompt('Copy this link:',x.url)}}
 function copyLink(){const u='https://fuelhaulers.live/?install';
   try{navigator.clipboard.writeText(u).then(()=>toast('Link copied. Paste it in your browser.'),()=>prompt('Copy this link:',u))}catch(e){prompt('Copy this link:',u)}}
 if(/[?&]install\b/.test(location.search)&&!isApp())setTimeout(()=>installApp(),1200);
@@ -882,7 +904,7 @@ function racks(){
   const q=(S.q||'').toLowerCase(),mine=myActive();
   const list=TERMINALS.filter(t=>(S.region==='All'||t.region===S.region)&&(!q||(t.name+' '+t.addr+' '+t.id).toLowerCase().includes(q)))
     .sort((a,b)=>((fresh(latest(b.id))?1:0)-(fresh(latest(a.id))?1:0))||a.name.localeCompare(b.name));
-  return `<div class="rhero"><h1>Know the rack <span>before you roll.</span></h1><p>Live wait times from drivers at Texas and Utah fuel terminals. Built by fuel haulers, for fuel haulers.</p></div>${installCard()}${D.session?'':`<div class="joinCard"><p><b>Drivers: join free.</b> Post rack reports, see who's waiting, chat with your city, and message other drivers.</p><div class="actions"><button class="btn" onclick="joinNow()">Join free</button><button class="ghost" onclick="signInNow()">I already have an account</button></div></div>`}
+  return `<div class="rhero"><h1>Know the rack <span>before you roll.</span></h1><p>Live wait times from drivers at Texas and Utah fuel terminals. Built by fuel haulers, for fuel haulers.</p></div>${installCard()}<div class="shareLine"><button type="button" onclick="shareApp()">📤 Share this app with a driver</button></div>${D.session?'':`<div class="joinCard"><p><b>Drivers: join free.</b> Post rack reports, see who's waiting, chat with your city, and message other drivers.</p><div class="actions"><button class="btn" onclick="joinNow()">Join free</button><button class="ghost" onclick="signInNow()">I already have an account</button></div></div>`}
   <div class="wxSlot">${wxTicker(S.region)}</div>
   ${mine?`<div class="card myspot">
       <span class="stamp" style="color:var(--navy)">Your spot</span>
@@ -1983,6 +2005,7 @@ function me(){
       <span><b>HOS RECAP</b><small>70 hr / 8 day calculator</small></span>
       <svg class="arr" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
     </a>
+    <button type="button" class="shareBtn" onclick="shareApp()">📤 Share the app with a driver (QR code or link)</button>
     ${D.blocked.size?`<div class="card"><h3 class="section" style="font-size:20px">Blocked drivers</h3>${[...D.blocked].map(id=>`<div class="report" style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span>${esc((D.people[id]||{name:'Driver'}).name)}</span><button class="ghost" onclick="unblock('${id}')">Unblock</button></div>`).join('')}</div>`:''}
     <div class="actions"><button class="btn alt" onclick="signOut()">Sign out</button></div>
     <p class="note" style="margin-top:18px"><a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html">Terms of Use</a> &nbsp;|&nbsp; <a href="mailto:support@fuelhaulers.live">Contact support</a></p>

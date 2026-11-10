@@ -131,6 +131,14 @@ input[type="date"] {
 .ihelp li:before { content: counter(st); flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--orange); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
 .ihelp .share { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border: 2px solid #2A7DE1; border-radius: 6px; color: #2A7DE1; vertical-align: middle; }
 .ihelp .tipnote { background: #FFF4D6; color: #5A4300; border-radius: 8px; padding: 10px 12px; font-size: .95rem; margin: 8px 0 4px; }
+.sharebtn { margin-top: 10px; width: 100%; padding: 12px; border-radius: 12px; border: 2px solid var(--orange); background: transparent; color: var(--fg); font: 700 1.05rem var(--font-body); cursor: pointer; }
+.qrbox { text-align: center; }
+.qrbox img { width: min(260px, 70vw); height: auto; border-radius: 12px; border: 1px solid var(--line); }
+.qrbox p { margin: 10px 0 14px; font-size: 1.02rem; }
+.qrbtns { display: grid; gap: 10px; }
+.qrbtns button { padding: 13px; border-radius: 10px; font: 700 1.05rem var(--font-body); cursor: pointer; border: 2px solid var(--orange); }
+.qrbtns .main { background: var(--orange); color: #fff; }
+.qrbtns .alt { background: transparent; color: var(--fg); }
 @media (prefers-reduced-motion: no-preference) { .inst .go { animation: instPulse 1.8s ease-in-out infinite; } }
 @keyframes instPulse { 50% { box-shadow: 0 0 0 6px rgba(232,121,43,.25); } }
 
@@ -217,6 +225,7 @@ footer a { color: var(--accent); font-weight: 600; }
     <button class="go" id="instGo" type="button">Install</button>
     <button class="x" id="instX" type="button" aria-label="Hide for now">✕</button>
   </div>
+  <button class="sharebtn" id="shareBtn" type="button">📤 Share HOS Recap with a driver</button>
 
   <div class="controls">
     <label class="field" for="startDate">Day 1 date
@@ -232,7 +241,7 @@ footer a { color: var(--accent); font-weight: 600; }
 
   <footer>
     Enter each day's on-duty time (driving plus on-duty not driving). Your recap counts that day and the 7 days before it. Turning on 34h Restart zeroes the count at the start of that day. This is a planning aid only; your ELD is the official record.
-    <br><br><a href="#" id="instLink">Install HOS Recap as an app on this phone</a>
+    <br><br><a href="#" id="shareLink">Share HOS Recap with a driver</a><br><br><a href="#" id="instLink">Install HOS Recap as an app on this phone</a>
     <br><br><a href="/">← Back to fuelhaulers.live</a>
   </footer>
 </main>
@@ -433,6 +442,7 @@ footer a { color: var(--accent); font-weight: 600; }
     if (e) e.preventDefault();
     track('recap_install_tap', { os: IOS ? 'ios' : ANDROID ? 'android' : 'other', in_app: INAPP });
     if (evt && !INAPP) { var x = evt; evt = null; x.prompt(); if (x.userChoice) x.userChoice.then(function (r) { track('recap_install_choice', { outcome: r.outcome }); }); return; }
+    document.getElementById('ihT').firstChild.nodeValue = 'Install HOS Recap ';
     body.innerHTML = steps(); help.hidden = false;
   }
   window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); evt = e; show(); });
@@ -443,6 +453,24 @@ footer a { color: var(--accent); font-weight: 600; }
   document.getElementById('ihClose').addEventListener('click', function () { help.hidden = true; });
   help.addEventListener('click', function (e) { if (e.target === help) help.hidden = true; });
   if (isApp()) { var l = document.getElementById('instLink'); if (l) l.parentNode.removeChild(l); }
+  var SH = { url: 'https://fuelhaulers.live/recap?install&ref=share', text: 'Free 70 hr / 8 day HOS recap calculator. Your hours stay on your phone. Tap to install it:' };
+  function shareOpen(e) {
+    if (e) e.preventDefault(); track('recap_share_open');
+    document.getElementById('ihT').firstChild.nodeValue = 'Share with a driver ';
+    body.innerHTML = '<div class="qrbox"><img src="/qr-recap.png" alt="QR code for HOS Recap" width="260" height="260"><p><b>Standing next to them?</b> Have them point their phone camera at this code.</p></div><div class="qrbtns"><button type="button" class="main" id="shSend">📤 Send the link (text, Facebook, anything)</button><button type="button" class="alt" id="shCopy">Copy the link</button></div>';
+    help.hidden = false;
+    document.getElementById('shSend').onclick = function () {
+      track('recap_share_send');
+      if (navigator.share) { navigator.share({ title: 'HOS Recap', text: SH.text, url: SH.url }).catch(function () {}); return; }
+      location.href = 'sms:?&body=' + encodeURIComponent(SH.text + ' ' + SH.url);
+    };
+    document.getElementById('shCopy').onclick = function () {
+      track('recap_share_copy');
+      try { navigator.clipboard.writeText(SH.url).then(function () { document.getElementById('shCopy').textContent = 'Copied ✓'; }, function () { prompt('Copy this link:', SH.url); }); } catch (x) { prompt('Copy this link:', SH.url); }
+    };
+  }
+  document.getElementById('shareBtn').addEventListener('click', shareOpen);
+  document.getElementById('shareLink').addEventListener('click', shareOpen);
   show();
   if (/[?&]install\b/.test(location.search) && !isApp()) setTimeout(install, 900);
   if ('serviceWorker' in navigator && location.protocol === 'https:') window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); });
