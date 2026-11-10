@@ -473,7 +473,15 @@ main>input[type=text],.regionSel{background:var(--navyDeep);color:var(--chalk);b
 #tabs.pulse .navbtn:nth-child(6) .in{animation-delay:2s}
 #tabs.pulse .navbtn:nth-child(7) .in{animation-delay:2.4s}
 #tabs.pulse .navbtn:nth-child(8) .in{animation-delay:2.8s}
-@media (prefers-reduced-motion:reduce){.stamp{transform:none}#tabs.pulse .navbtn .in{animation:none}}
+.recapBtn{display:flex;align-items:center;gap:14px;margin:14px 0;padding:18px 20px;border-radius:16px;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--orange),var(--orangeDeep));border:3px solid var(--orange2);animation:recapFlash 1.6s ease-in-out infinite}
+.recapBtn span{flex:1;display:flex;flex-direction:column;line-height:1.1}
+.recapBtn b{font-size:24px;letter-spacing:.04em}
+.recapBtn small{font-size:14px;opacity:.92;margin-top:4px}
+.recapBtn .arr{animation:recapNudge 1.6s ease-in-out infinite}
+.recapBtn:active{transform:scale(.97)}
+@keyframes recapFlash{0%,100%{box-shadow:0 0 0 0 rgba(244,185,66,.75);filter:brightness(1)}50%{box-shadow:0 0 0 10px rgba(244,185,66,0),0 0 24px rgba(244,185,66,.6);filter:brightness(1.18)}}
+@keyframes recapNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){.stamp{transform:none}#tabs.pulse .navbtn .in{animation:none}.recapBtn,.recapBtn .arr{animation:none}}
 
 </style>
 </head>
@@ -493,7 +501,7 @@ main>input[type=text],.regionSel{background:var(--navyDeep);color:var(--chalk);b
 {"symbols":[{"proName":"TVC:USOIL","title":"WTI Crude"},{"proName":"TVC:UKOIL","title":"Brent Crude"},{"proName":"AMEX:XLE","title":"Energy Stocks"},{"proName":"NYSE:VLO","title":"Valero"},{"proName":"NYSE:PSX","title":"Phillips 66"},{"proName":"NYSE:XOM","title":"ExxonMobil"},{"proName":"NYSE:CVX","title":"Chevron"},{"proName":"NYSE:MPC","title":"Marathon Petroleum"}],"showSymbolLogo":false,"isTransparent":false,"displayMode":"adaptive","colorTheme":"dark","locale":"en"}
 </script></div></div>
 <main id="app"><noscript><p style="padding:20px">fuelhaulers.live shows live rack reports from Texas and Utah fuel terminals, city chat, carrier reviews, and jobs for fuel haulers. Please turn on JavaScript to use it.</p></noscript></main>
-<footer class="site-foot"><a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html">Terms of Use</a> &nbsp;|&nbsp; <a href="mailto:support@fuelhaulers.live">Contact</a><br>© 2026 fuelhaulers.live &nbsp;·&nbsp; Never post while driving.<br><span style="font-size:12px">Weather: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> and the National Weather Service</span></footer>
+<footer class="site-foot"><a href="/recap"><b>HOS Recap Calculator</b></a><br><a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html">Terms of Use</a> &nbsp;|&nbsp; <a href="mailto:support@fuelhaulers.live">Contact</a><br>© 2026 fuelhaulers.live &nbsp;·&nbsp; Never post while driving.<br><span style="font-size:12px">Weather: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> and the National Weather Service</span></footer>
 <div class="sheetWrap" id="sheetWrap"><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
 <div class="toast" id="toast"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -1970,6 +1978,11 @@ function me(){
       <button class="btn alt" onclick="D.editing=true;render()">✎ Edit my profile</button>`}
       ${m.approved?'':'<div class="card" style="background:var(--bg);margin:10px 0 0"><b>Posting is turned off for your account.</b> If you think this is a mistake, email <a href="mailto:support@fuelhaulers.live">support@fuelhaulers.live</a>.</div>'}
     </div>
+    <a class="recapBtn" href="/recap" aria-label="Open HOS Recap Calculator">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <span><b>HOS RECAP</b><small>70 hr / 8 day calculator</small></span>
+      <svg class="arr" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </a>
     ${D.blocked.size?`<div class="card"><h3 class="section" style="font-size:20px">Blocked drivers</h3>${[...D.blocked].map(id=>`<div class="report" style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span>${esc((D.people[id]||{name:'Driver'}).name)}</span><button class="ghost" onclick="unblock('${id}')">Unblock</button></div>`).join('')}</div>`:''}
     <div class="actions"><button class="btn alt" onclick="signOut()">Sign out</button></div>
     <p class="note" style="margin-top:18px"><a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html">Terms of Use</a> &nbsp;|&nbsp; <a href="mailto:support@fuelhaulers.live">Contact support</a></p>

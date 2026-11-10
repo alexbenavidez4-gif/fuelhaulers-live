@@ -10,6 +10,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="HOS Recap">
+<link rel="manifest" href="/recap.webmanifest">
+<link rel="icon" type="image/png" href="/recap-icon-192.png">
+<link rel="apple-touch-icon" href="/recap-apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap">
@@ -112,6 +115,24 @@ input[type="date"] {
 .notice b { color: var(--accent); }
 .privacy { margin-top: 12px; font-size: .84rem; color: var(--muted); display: flex; gap: 8px; align-items: flex-start; }
 .privacy svg { flex-shrink: 0; margin-top: 2px; }
+.inst { margin-top: 12px; display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 12px; background: var(--navy); color: #fff; }
+.inst img { width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0; box-shadow: 0 0 0 1px rgba(255,255,255,.35); }
+.inst p { margin: 0; flex: 1; font-size: .92rem; line-height: 1.3; }
+.inst p b { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: .02em; display: block; }
+.inst .go { background: var(--orange); color: #fff; border: 0; border-radius: 10px; padding: 10px 16px; font: 700 1rem var(--font-display); letter-spacing: .04em; text-transform: uppercase; cursor: pointer; }
+.inst .x { background: transparent; border: 0; color: #fff; font-size: 1.1rem; cursor: pointer; padding: 6px; opacity: .8; }
+.ihelp { position: fixed; inset: 0; z-index: 50; background: rgba(10,16,28,.6); display: flex; align-items: flex-end; justify-content: center; }
+.ihelp[hidden] { display: none; }
+.ihelp .box { background: var(--surface); color: var(--fg); width: 100%; max-width: 560px; border-radius: 18px 18px 0 0; padding: 18px 18px calc(22px + env(safe-area-inset-bottom)); max-height: 85vh; overflow: auto; }
+.ihelp h2 { font-family: var(--font-display); margin: 0 0 6px; font-size: 1.6rem; display: flex; justify-content: space-between; align-items: center; }
+.ihelp h2 button { background: var(--surface-2); border: 0; border-radius: 8px; width: 36px; height: 36px; font-size: 1rem; cursor: pointer; color: var(--fg); }
+.ihelp ol { list-style: none; padding: 0; margin: 0; counter-reset: st; }
+.ihelp li { counter-increment: st; display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px solid var(--line); font-size: 1.08rem; line-height: 1.4; }
+.ihelp li:before { content: counter(st); flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--orange); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.ihelp .share { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border: 2px solid #2A7DE1; border-radius: 6px; color: #2A7DE1; vertical-align: middle; }
+.ihelp .tipnote { background: #FFF4D6; color: #5A4300; border-radius: 8px; padding: 10px 12px; font-size: .95rem; margin: 8px 0 4px; }
+@media (prefers-reduced-motion: no-preference) { .inst .go { animation: instPulse 1.8s ease-in-out infinite; } }
+@keyframes instPulse { 50% { box-shadow: 0 0 0 6px rgba(232,121,43,.25); } }
 
 /* Day log */
 .log { display: grid; gap: 12px; margin-top: 16px; }
@@ -190,6 +211,13 @@ footer a { color: var(--accent); font-weight: 600; }
     <span>Private: your hours save only on this phone. They are never sent to fuelhaulers.live or anyone else.</span>
   </div>
 
+  <div class="inst" id="instCard" hidden>
+    <img src="/recap-icon-192.png" alt="">
+    <p><b>Get the HOS Recap app</b>Its own icon on your home screen. Free.</p>
+    <button class="go" id="instGo" type="button">Install</button>
+    <button class="x" id="instX" type="button" aria-label="Hide for now">✕</button>
+  </div>
+
   <div class="controls">
     <label class="field" for="startDate">Day 1 date
       <input type="date" id="startDate">
@@ -204,7 +232,7 @@ footer a { color: var(--accent); font-weight: 600; }
 
   <footer>
     Enter each day's on-duty time (driving plus on-duty not driving). Your recap counts that day and the 7 days before it. Turning on 34h Restart zeroes the count at the start of that day. This is a planning aid only; your ELD is the official record.
-    <br><br>Tip: add this page to your home screen from your browser menu so it opens like an app.
+    <br><br><a href="#" id="instLink">Install HOS Recap as an app on this phone</a>
     <br><br><a href="/">← Back to fuelhaulers.live</a>
   </footer>
 </main>
@@ -379,6 +407,45 @@ footer a { color: var(--accent); font-weight: 600; }
   document.getElementById("clearBtn").addEventListener("click", askClear);
 
   build(); update();
+})();
+</script>
+<div class="ihelp" id="ihelp" hidden role="dialog" aria-modal="true" aria-labelledby="ihT"><div class="box"><h2 id="ihT">Install HOS Recap <button type="button" id="ihClose" aria-label="Close">✕</button></h2><div id="ihBody"></div></div></div>
+<script>
+/* Install HOS Recap as its own app */
+(function () {
+  var evt = null, UA = navigator.userAgent || '';
+  var IOS = /iPhone|iPad|iPod/.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var ANDROID = /Android/.test(UA);
+  var INAPP = /FBAN|FBAV|FB_IAB|Instagram|Messenger|Line\/|TikTok|musical_ly|Snapchat/i.test(UA);
+  var card = document.getElementById('instCard'), help = document.getElementById('ihelp'), body = document.getElementById('ihBody');
+  function isApp() { return (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true; }
+  function hidden() { try { return Date.now() < (+localStorage.getItem('fhl-recap-inst-hide') || 0); } catch (e) { return false; } }
+  function track(n, p) { try { if (window.gtag) gtag('event', n, p || {}); } catch (e) {} }
+  function show() { card.hidden = isApp() || hidden(); }
+  var share = '<span class="share" aria-label="Share button"><svg width="16" height="18" viewBox="0 0 16 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12V1M4 5l4-4 4 4M3 8H1.5v9h13V8H13"/></svg></span>';
+  function steps() {
+    if (INAPP) return '<p class="tipnote">You opened this inside another app. Apps can only be installed from your phone\'s regular browser.</p><ol><li><span>Tap the <b>⋯</b> or <b>⋮</b> button at the top or bottom right.</span></li><li><span>Tap <b>' + (IOS ? 'Open in Safari' : 'Open in Chrome') + '</b> (it may say <b>Open in browser</b>).</span></li><li><span>Tap <b>Install</b> again on this page.</span></li></ol>';
+    if (IOS) return '<ol><li><span>Tap the Share button ' + share + (/CriOS/.test(UA) ? ' at the <b>top right</b>, next to the web address.' : ' at the <b>bottom</b> of the screen (on iPad it is at the top).') + '</span></li><li><span>Scroll down and tap <b>Add to Home Screen</b>. You may need to tap <b>More</b> to find it.</span></li><li><span>Tap <b>Add</b> at the top right.</span></li><li><span>Open it from the orange clock <b>HOS</b> icon on your home screen.</span></li></ol><p class="tipnote">On iPhone, the app keeps its own copy of your hours. Enter your hours in the app after you install it, not here in Safari.</p>';
+    if (ANDROID) return '<ol><li><span>Tap the <b>⋮</b> menu at the top right of Chrome.</span></li><li><span>Tap <b>Add to Home screen</b> or <b>Install app</b>.</span></li><li><span>Tap <b>Install</b>.</span></li><li><span>Open it from the orange clock <b>HOS</b> icon on your home screen.</span></li></ol><p style="font-size:.95rem;color:var(--muted)">Samsung Internet: tap <b>☰</b> at the bottom right, then <b>Add page to</b>, then <b>Home screen</b>.</p>';
+    return '<p style="font-size:1.05rem">Open <b>fuelhaulers.live/recap</b> on your phone and tap <b>Install</b> there. Works on iPhone and Android.</p>';
+  }
+  function install(e) {
+    if (e) e.preventDefault();
+    track('recap_install_tap', { os: IOS ? 'ios' : ANDROID ? 'android' : 'other', in_app: INAPP });
+    if (evt && !INAPP) { var x = evt; evt = null; x.prompt(); if (x.userChoice) x.userChoice.then(function (r) { track('recap_install_choice', { outcome: r.outcome }); }); return; }
+    body.innerHTML = steps(); help.hidden = false;
+  }
+  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); evt = e; show(); });
+  window.addEventListener('appinstalled', function () { evt = null; help.hidden = true; card.hidden = true; track('recap_app_installed'); });
+  document.getElementById('instGo').addEventListener('click', install);
+  document.getElementById('instLink').addEventListener('click', install);
+  document.getElementById('instX').addEventListener('click', function () { try { localStorage.setItem('fhl-recap-inst-hide', String(Date.now() + 14 * 864e5)); } catch (e) {} card.hidden = true; });
+  document.getElementById('ihClose').addEventListener('click', function () { help.hidden = true; });
+  help.addEventListener('click', function (e) { if (e.target === help) help.hidden = true; });
+  if (isApp()) { var l = document.getElementById('instLink'); if (l) l.parentNode.removeChild(l); }
+  show();
+  if (/[?&]install\b/.test(location.search) && !isApp()) setTimeout(install, 900);
+  if ('serviceWorker' in navigator && location.protocol === 'https:') window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); });
 })();
 </script>
 </body>
