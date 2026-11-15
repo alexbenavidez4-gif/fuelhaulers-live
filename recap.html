@@ -3,9 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>8-Day HOS Recap Calculator | fuelhaulers.live</title>
-<meta name="description" content="Free 70-hour/8-day HOS recap calculator for truck drivers. Log 14 days, track 34-hour restarts, and see hours available and hours dropping off. Your hours stay on your phone.">
+<title>70 Hour 8 Day Recap Calculator (HOS) | Free | FuelHaulers</title>
+<meta name="description" content="Free 70-hour/8-day HOS recap calculator for truck drivers. See hours available, hours dropping off tonight, and 34-hour restarts. Your hours stay on your phone.">
 <meta name="theme-color" content="#1b2a44">
+<link rel="canonical" href="https://fuelhaulers.live/recap">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="fuelhaulers.live">
+<meta property="og:url" content="https://fuelhaulers.live/recap">
+<meta property="og:title" content="70 Hour 8 Day Recap Calculator (HOS) | Free | FuelHaulers">
+<meta property="og:description" content="Free 70-hour/8-day HOS recap calculator for truck drivers. See hours available, hours dropping off tonight, and 34-hour restarts. Your hours stay on your phone.">
+<meta property="og:image" content="https://fuelhaulers.live/recap-icon-512.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "HOS Recap: 70 Hour 8 Day Recap Calculator", "url": "https://fuelhaulers.live/recap", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser, Android, iPhone)", "description": "Free 70-hour/8-day HOS recap calculator for truck drivers. See hours available, hours dropping off tonight, and 34-hour restarts. Your hours stay on your phone.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "fuelhaulers.live", "url": "https://fuelhaulers.live/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does the 70-hour / 8-day rule work?", "acceptedAnswer": {"@type": "Answer", "text": "Under the federal hours of service rules, a property-carrying driver can't drive after being on duty 70 hours in any 8 days in a row (or 60 hours in 7 days, if the carrier doesn't run every day). Each night at midnight, the oldest day in the 8-day window drops off and those hours come back."}}, {"@type": "Question", "name": "What counts as on-duty time?", "acceptedAnswer": {"@type": "Answer", "text": "Driving plus on-duty not driving: loading at the rack, waiting in line, fueling, inspections, paperwork, and delivering. Off-duty and sleeper berth time don't count toward the 70."}}, {"@type": "Question", "name": "What is a 34-hour restart?", "acceptedAnswer": {"@type": "Answer", "text": "Taking 34 or more hours off duty in a row resets your weekly count to zero. In this calculator, turn on 34h Restart for the day you came back, and the count starts over from that day."}}, {"@type": "Question", "name": "What does \"hours dropping off\" mean?", "acceptedAnswer": {"@type": "Answer", "text": "It's the on-duty time from the oldest day in your 8-day window. Those hours fall out of your recap at midnight, so that's how much time you get back tomorrow."}}, {"@type": "Question", "name": "Do Texas intrastate drivers use the same rules?", "acceptedAnswer": {"@type": "Answer", "text": "Drivers who stay inside Texas follow Texas intrastate rules: 70 hours in 7 days, up to 12 hours of driving, no driving after 15 hours on duty, and a 34-hour restart. Drivers who cross state lines follow the federal rules. Ask your carrier which rules apply to you."}}, {"@type": "Question", "name": "Is my information private?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Your hours save only on your phone. Nothing is sent to fuelhaulers.live or anyone else, and you don't need an account."}}]}</script>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -190,6 +200,11 @@ input[type="date"] {
 .day.is-over .out { background: var(--bad-soft); border-radius: 8px; padding: 4px 10px; border-top: none; }
 .partial { font-size: .76rem; color: var(--muted); }
 
+.faq { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line); }
+.faq h2 { font-family: var(--font-display); font-size: 1.5rem; margin: 0 0 8px; text-transform: uppercase; }
+.faq h3 { font-size: 1.02rem; margin: 16px 0 4px; }
+.faq p { margin: 0; color: var(--muted); line-height: 1.55; font-size: .95rem; }
+.faq .faqNote { margin-top: 16px; font-size: .85rem; }
 footer { margin-top: 22px; color: var(--muted); font-size: .8rem; line-height: 1.5; }
 footer a { color: var(--accent); font-weight: 600; }
 
@@ -238,6 +253,23 @@ footer a { color: var(--accent); font-weight: 600; }
   <div class="notice" id="exampleNote" hidden><b>Example data.</b> These numbers are a sample so you can see how it works. Tap <b>Clear all</b> to start your own log.</div>
 
   <div class="log" id="log"></div>
+
+  <section class="faq" aria-labelledby="faqH">
+    <h2 id="faqH">70-hour / 8-day recap: common questions</h2>
+    <h3>How does the 70-hour / 8-day rule work?</h3>
+    <p>Under the federal hours of service rules, a property-carrying driver can&#x27;t drive after being on duty 70 hours in any 8 days in a row (or 60 hours in 7 days, if the carrier doesn&#x27;t run every day). Each night at midnight, the oldest day in the 8-day window drops off and those hours come back.</p>
+    <h3>What counts as on-duty time?</h3>
+    <p>Driving plus on-duty not driving: loading at the rack, waiting in line, fueling, inspections, paperwork, and delivering. Off-duty and sleeper berth time don&#x27;t count toward the 70.</p>
+    <h3>What is a 34-hour restart?</h3>
+    <p>Taking 34 or more hours off duty in a row resets your weekly count to zero. In this calculator, turn on 34h Restart for the day you came back, and the count starts over from that day.</p>
+    <h3>What does &quot;hours dropping off&quot; mean?</h3>
+    <p>It&#x27;s the on-duty time from the oldest day in your 8-day window. Those hours fall out of your recap at midnight, so that&#x27;s how much time you get back tomorrow.</p>
+    <h3>Do Texas intrastate drivers use the same rules?</h3>
+    <p>Drivers who stay inside Texas follow Texas intrastate rules: 70 hours in 7 days, up to 12 hours of driving, no driving after 15 hours on duty, and a 34-hour restart. Drivers who cross state lines follow the federal rules. Ask your carrier which rules apply to you.</p>
+    <h3>Is my information private?</h3>
+    <p>Yes. Your hours save only on your phone. Nothing is sent to fuelhaulers.live or anyone else, and you don&#x27;t need an account.</p>
+    <p class="faqNote">This calculator is a planning aid. Your ELD is the official record, and your carrier's rules come first.</p>
+  </section>
 
   <footer>
     Enter each day's on-duty time (driving plus on-duty not driving). Your recap counts that day and the 7 days before it. Turning on 34h Restart zeroes the count at the start of that day. This is a planning aid only; your ELD is the official record.
