@@ -1,0 +1,348 @@
+{
+ "site": {
+  "name": "fuelhaulers.live",
+  "alt_name": "FuelHaulers",
+  "url": "https://fuelhaulers.live/",
+  "tagline": "Know the Rack before you roll!",
+  "summary": "fuelhaulers.live is a free website and phone app for fuel haulers and tanker drivers. Drivers at the rack post how busy each fuel terminal is right now, from dead to packed, with lanes down, product outages, and about how long the wait is.",
+  "built_by": "Built by a working fuel hauler in San Antonio, Texas, for other fuel haulers.",
+  "areas": "Texas and Utah",
+  "email": "support@fuelhaulers.live",
+  "cost": "Free. No ads to click through, nothing to buy.",
+  "features": [
+   {
+    "name": "Live rack reports",
+    "text": "Drivers tap how busy a terminal is right now (dead, moderate, busy, or packed), plus lanes down, product outages, and the wait time. Each report shows how old it is.",
+    "link": "/"
+   },
+   {
+    "name": "Usual busy hours",
+    "text": "Every terminal has a chart of its usual busy and quiet hours for each day of the week, built from past driver reports, so you can plan when to load.",
+    "link": "/"
+   },
+   {
+    "name": "HOS Recap calculator",
+    "text": "A free 70-hour / 8-day recap calculator. It shows hours available, hours dropping off at midnight, and handles 34-hour restarts. Your hours stay on your phone.",
+    "link": "/recap"
+   },
+   {
+    "name": "City chat",
+    "text": "Chat with other drivers in your area about racks, roads, and the job.",
+    "link": "/"
+   },
+   {
+    "name": "Scale reports",
+    "text": "Drivers report whether weigh stations are open or closed.",
+    "link": "/"
+   },
+   {
+    "name": "Jobs and carrier reviews",
+    "text": "Fuel hauling job listings and driver reviews of carriers.",
+    "link": "/"
+   },
+   {
+    "name": "Private messages",
+    "text": "Message other drivers directly, with a block button if you need it.",
+    "link": "/"
+   },
+   {
+    "name": "Install like an app",
+    "text": "Add fuelhaulers.live to your home screen on Android or iPhone. No app store needed.",
+    "link": "/?install"
+   }
+  ],
+  "safety": "Never post while driving. Report from the rack, parked."
+ },
+ "faqs": [
+  {
+   "q": "What is fuelhaulers.live?",
+   "a": "A free site and phone app where fuel haulers share live fuel rack and terminal wait times, plus a free HOS recap calculator, city chat, scale reports, and fuel hauling jobs."
+  },
+  {
+   "q": "Is fuelhaulers.live free?",
+   "a": "Yes. Reading reports and using the HOS Recap calculator are free with no account. A free account is only needed to post rack reports, chat, or message drivers."
+  },
+  {
+   "q": "Where do the rack wait times come from?",
+   "a": "From drivers who are at the rack. Each report shows how busy the terminal is, lanes down, product outages, the wait time, and how long ago it was posted. When nobody has posted recently, the terminal shows its usual busy hours from past reports."
+  },
+  {
+   "q": "Which fuel terminals does it cover?",
+   "a": "129 fuel racks and terminals across Texas and Utah, including San Antonio, Houston, Dallas, Austin, Corpus Christi, El Paso, the Permian Basin, and Salt Lake City."
+  },
+  {
+   "q": "Can I use it on my phone like an app?",
+   "a": "Yes. Open fuelhaulers.live on your phone and tap Install. On iPhone, tap Share, then Add to Home Screen. There is nothing to download from an app store."
+  },
+  {
+   "q": "Does the HOS Recap calculator save my hours online?",
+   "a": "No. Your hours save only on your own phone. Nothing is sent to fuelhaulers.live or anyone else."
+  }
+ ],
+ "guides": [
+  {
+   "slug": "texas-vs-federal-hours-of-service",
+   "title": "Texas vs. Federal Hours of Service Rules for Fuel Haulers",
+   "description": "Texas intrastate vs. federal hours of service rules side by side: 12 vs. 11 hours driving, 15 vs. 14 hours, 70 hours in 7 days vs. 60/70, breaks, restarts, and short-haul.",
+   "updated": "2026-11-23",
+   "intro": "Fuel haulers in Texas run under one of two sets of hours of service rules. Which one you follow depends on whether your work is intrastate (staying in Texas) or interstate. Here is how they compare.",
+   "sections": [
+    {
+     "h": "Which rules apply to you?",
+     "p": [
+      "Drivers whose loads and routes stay inside Texas usually run on Texas intrastate rules, often called \"Texas time.\" Drivers who cross state lines, or haul freight that is part of an interstate move, run on the federal rules from the FMCSA. Your carrier decides which rules you are dispatched under, so ask them if you are not sure."
+     ]
+    },
+    {
+     "h": "Side by side",
+     "table": {
+      "head": [
+       "Rule",
+       "Texas intrastate",
+       "Federal (interstate)"
+      ],
+      "rows": [
+       [
+        "Driving limit",
+        "12 hours after 8 hours off in a row",
+        "11 hours after 10 hours off in a row"
+       ],
+       [
+        "Workday limit",
+        "No driving after 15 hours on duty",
+        "No driving after the 14th hour after coming on duty"
+       ],
+       [
+        "30-minute break",
+        "Not required",
+        "Required after 8 hours of driving. Any 30 minutes not driving counts, including waiting at the rack"
+       ],
+       [
+        "Weekly limit",
+        "70 hours on duty in 7 days",
+        "60 hours in 7 days, or 70 hours in 8 days if the carrier runs every day"
+       ],
+       [
+        "Restart",
+        "34 hours off in a row",
+        "34 hours off in a row"
+       ],
+       [
+        "Short-haul (no logbook)",
+        "Within 150 air miles, released within 12 hours",
+        "Within 150 air miles, back within 14 hours"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "What counts as on-duty time?",
+     "p": [
+      "Driving, plus everything you do for work that is not driving: pre-trip inspections, loading at the rack, waiting in line at the terminal, fueling, unloading at the drop, and paperwork. Off-duty and sleeper berth time do not count toward your weekly hours."
+     ]
+    },
+    {
+     "h": "Bad weather and traffic",
+     "p": [
+      "Under the federal rules, drivers who run into unexpected adverse driving conditions, such as bad weather or a road closure they could not have known about, can extend their driving time and workday by up to 2 hours."
+     ]
+    },
+    {
+     "h": "Utah drivers",
+     "p": [
+      "Utah generally follows the federal hours of service rules, including for drivers who stay inside Utah. Check with your carrier for any exceptions that apply to your operation."
+     ]
+    }
+   ],
+   "faqs": [
+    {
+     "q": "How many hours can you drive on Texas time?",
+     "a": "Up to 12 hours of driving after 8 hours off in a row, with no driving after 15 hours on duty, and no more than 70 hours on duty in 7 days."
+    },
+    {
+     "q": "Do Texas intrastate drivers need a 30-minute break?",
+     "a": "No. The 30-minute break is a federal rule. Texas intrastate rules do not require it."
+    },
+    {
+     "q": "Is there a 34-hour restart on Texas time?",
+     "a": "Yes. Taking 34 or more hours off duty in a row restarts the 7-day period."
+    }
+   ],
+   "sources": [
+    [
+     "FMCSA: Summary of Hours of Service Regulations",
+     "https://www.fmcsa.dot.gov/regulations/hours-service/summary-hours-service-regulations"
+    ],
+    [
+     "Texas DPS: Commercial vehicle quick reference",
+     "https://www.dps.texas.gov/sites/default/files/documents/cve/publications/quickrefinfo.pdf"
+    ],
+    [
+     "37 Texas Administrative Code § 4.12",
+     "https://law.cornell.edu/regulations/texas/37-Tex-Admin-Code-SS-4-12"
+    ]
+   ]
+  },
+  {
+   "slug": "70-hour-8-day-recap-explained",
+   "title": "How the 70-Hour / 8-Day Recap Works (With Examples)",
+   "description": "How to figure your 70-hour / 8-day recap: what counts as on duty, how hours drop off at midnight, a worked example, and how Texas 70-in-7 differs.",
+   "updated": "2026-11-23",
+   "intro": "Your recap is how many on-duty hours you have used in the last 8 days, and how many you have left before you hit 70. Here is how to figure it, and how to know what you get back each night.",
+   "sections": [
+    {
+     "h": "The rule",
+     "p": [
+      "Under the federal rules, a driver whose carrier runs every day cannot drive after being on duty 70 hours in any 8 days in a row. If the carrier does not run every day, the limit is 60 hours in 7 days. The window rolls: each night at midnight the oldest day falls off and those hours come back."
+     ]
+    },
+    {
+     "h": "A worked example",
+     "p": [
+      "Say your last 8 days of on-duty time were:"
+     ],
+     "table": {
+      "head": [
+       "Day",
+       "On duty"
+      ],
+      "rows": [
+       [
+        "Day 1 (oldest)",
+        "10 hrs"
+       ],
+       [
+        "Day 2",
+        "12 hrs"
+       ],
+       [
+        "Day 3",
+        "9 hrs"
+       ],
+       [
+        "Day 4",
+        "11 hrs"
+       ],
+       [
+        "Day 5",
+        "0 hrs (off)"
+       ],
+       [
+        "Day 6",
+        "8 hrs"
+       ],
+       [
+        "Day 7",
+        "10 hrs"
+       ],
+       [
+        "Day 8 (today)",
+        "7 hrs"
+       ]
+      ]
+     },
+     "p2": [
+      "Your total is 67 hours, so you have 3 hours left today. At midnight, Day 1's 10 hours drop off. Tomorrow you start with 70 minus 57, which is 13 hours available."
+     ]
+    },
+    {
+     "h": "What to count",
+     "p": [
+      "Count all on-duty time, not just driving: inspections, loading at the rack, waiting in line, fueling, unloading, and paperwork. Off-duty and sleeper berth time do not count."
+     ]
+    },
+    {
+     "h": "Texas intrastate: 70 hours in 7 days",
+     "p": [
+      "Drivers on Texas intrastate rules use 70 hours in 7 days instead of 8. The math is the same, but only the last 7 days count, so hours come back a day sooner."
+     ]
+    },
+    {
+     "h": "Skip the math",
+     "p": [
+      "The free fuelhaulers.live HOS Recap calculator does this for you. Enter each day's on-duty hours and it shows your total, hours available, and what drops off tonight. Your hours stay on your phone."
+     ]
+    }
+   ],
+   "faqs": [
+    {
+     "q": "When do hours drop off a 70-hour recap?",
+     "a": "At midnight. The oldest day in your 8-day window falls off, and those hours become available again."
+    },
+    {
+     "q": "Does waiting at the rack count toward my 70 hours?",
+     "a": "Yes. Waiting at the terminal is on-duty not driving time, so it counts toward your 70 hours."
+    }
+   ],
+   "sources": [
+    [
+     "FMCSA: Summary of Hours of Service Regulations",
+     "https://www.fmcsa.dot.gov/regulations/hours-service/summary-hours-service-regulations"
+    ],
+    [
+     "FMCSA: Interstate Truck Driver's Guide to Hours of Service",
+     "https://www.fmcsa.dot.gov/sites/fmcsa.dot.gov/files/2022-04/FMCSA-HOS-395-DRIVERS-GUIDE-TO-HOS(2022-04-28)_0.pdf"
+    ]
+   ]
+  },
+  {
+   "slug": "34-hour-restart",
+   "title": "The 34-Hour Restart: How It Works for Fuel Haulers",
+   "description": "How the 34-hour restart resets your 60/70-hour clock, when it makes sense to take one, and how it works on Texas intrastate time.",
+   "updated": "2026-11-23",
+   "intro": "A 34-hour restart wipes your weekly hours back to zero. Here is how it works and when it is worth taking.",
+   "sections": [
+    {
+     "h": "How it works",
+     "p": [
+      "If you take 34 or more hours off duty in a row, your 7-day or 8-day period starts over. All the on-duty hours from before the restart stop counting, and you start the next shift with a full 60 or 70 hours available."
+     ]
+    },
+    {
+     "h": "It is optional",
+     "p": [
+      "You never have to take a restart. Without one, your hours simply roll off day by day at midnight. A restart is most useful when you are close to your limit and a lot of hours are stuck in the recent days of your window."
+     ]
+    },
+    {
+     "h": "The old extra rules are not in effect",
+     "p": [
+      "For a while, the federal restart had extra conditions: it had to include two 1 a.m. to 5 a.m. periods and could only be used once a week. Those conditions are not in effect. A restart today is simply 34 hours off in a row."
+     ]
+    },
+    {
+     "h": "Texas intrastate",
+     "p": [
+      "Texas intrastate rules also allow a 34-hour restart. Taking 34 or more hours off duty in a row restarts your 7-day period."
+     ]
+    },
+    {
+     "h": "Tracking it",
+     "p": [
+      "In the fuelhaulers.live HOS Recap calculator, turn on 34h Restart for the day you came back to work. The count starts over from that day."
+     ]
+    }
+   ],
+   "faqs": [
+    {
+     "q": "How long is a restart?",
+     "a": "34 hours off duty in a row. Sleeper berth time counts as off duty for the restart."
+    },
+    {
+     "q": "Do I have to take a 34-hour restart?",
+     "a": "No. It is optional. Without one, hours roll off your recap each night at midnight."
+    }
+   ],
+   "sources": [
+    [
+     "FMCSA: Summary of Hours of Service Regulations",
+     "https://www.fmcsa.dot.gov/regulations/hours-service/summary-hours-service-regulations"
+    ],
+    [
+     "Texas DPS rules (via Texas Food & Fuel Association)",
+     "https://texasfoodandfuelassociation.growthzoneapp.com/tffa-buzz/Details/texas-dps-regulations-governing-transportation-safety-134052"
+    ]
+   ]
+  }
+ ]
+}

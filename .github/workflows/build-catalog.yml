@@ -1,0 +1,42 @@
+name: Build knowledge catalog
+# Rebuilds the terminal, rack, guide, and About pages, llms.txt, terminals.json,
+# and sitemap.xml whenever the catalog, the builder, or the app's rack list changes.
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/catalog.json
+      - tools/build_catalog.py
+      - index.html
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: build-catalog
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build pages
+        run: python3 tools/build_catalog.py
+      - name: Save changes
+        run: |
+          # sitemap/terminals.json carry today's date; only commit when pages really changed
+          if git diff --quiet -- terminals racks guides about llms.txt assets && [ -z "$(git ls-files --others --exclude-standard terminals racks guides about)" ]; then
+            echo "No page changes."; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add terminals racks guides about llms.txt terminals.json sitemap.xml assets
+          git commit -m "Rebuild knowledge catalog pages"
+          git push
+          # pushes made by this workflow don't start a site update on their own, so ask for one
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Could not request a Pages build"
+        env:
+          GH_TOKEN: ${{ github.token }}

@@ -1,0 +1,45 @@
+# fuelhaulers.live
+
+> fuelhaulers.live is a free website and phone app for fuel haulers and tanker drivers. Drivers at the rack post how busy each fuel terminal is right now, from dead to packed, with lanes down, product outages, and about how long the wait is. Built by a working fuel hauler in San Antonio, Texas, for other fuel haulers. Covers 129 fuel terminals in Texas and Utah. Free. No ads to click through, nothing to buy.
+
+## Main pages
+- [Live rack wait times](https://fuelhaulers.live/): driver-posted fuel rack busyness, lanes down, product outages, wait times, usual busy hours
+- [HOS Recap calculator](https://fuelhaulers.live/recap): free 70-hour / 8-day recap calculator; hours stay on the user's phone
+- [Fuel terminals by area](https://fuelhaulers.live/terminals/): 129 racks with addresses and IRS terminal numbers
+- [About](https://fuelhaulers.live/about/)
+- [Terminal data (JSON)](https://fuelhaulers.live/terminals.json)
+
+## Guides
+- [Texas vs. Federal Hours of Service Rules for Fuel Haulers](https://fuelhaulers.live/guides/texas-vs-federal-hours-of-service/): Texas intrastate vs. federal hours of service rules side by side: 12 vs. 11 hours driving, 15 vs. 14 hours, 70 hours in 7 days vs. 60/70, breaks, restarts, and short-haul.
+- [How the 70-Hour / 8-Day Recap Works (With Examples)](https://fuelhaulers.live/guides/70-hour-8-day-recap-explained/): How to figure your 70-hour / 8-day recap: what counts as on duty, how hours drop off at midnight, a worked example, and how Texas 70-in-7 differs.
+- [The 34-Hour Restart: How It Works for Fuel Haulers](https://fuelhaulers.live/guides/34-hour-restart/): How the 34-hour restart resets your 60/70-hour clock, when it makes sense to take one, and how it works on Texas intrastate time.
+
+## Areas
+- [San Antonio](https://fuelhaulers.live/terminals/san-antonio/): 11 terminals
+- [Salt Lake City](https://fuelhaulers.live/terminals/salt-lake-city/): 6 terminals
+- [Cedar City / St. George](https://fuelhaulers.live/terminals/cedar-city-st-george/): 1 terminal
+- [Cisco / Grand Junction](https://fuelhaulers.live/terminals/cisco-grand-junction/): 1 terminal
+- [Austin](https://fuelhaulers.live/terminals/austin/): 5 terminals
+- [Houston](https://fuelhaulers.live/terminals/houston/): 27 terminals
+- [Dallas](https://fuelhaulers.live/terminals/dallas/): 12 terminals
+- [Corpus Christi](https://fuelhaulers.live/terminals/corpus-christi/): 8 terminals
+- [Laredo](https://fuelhaulers.live/terminals/laredo/): 1 terminal
+- [Rio Grande Valley](https://fuelhaulers.live/terminals/rio-grande-valley/): 14 terminals
+- [Waco / Bryan](https://fuelhaulers.live/terminals/waco-bryan/): 7 terminals
+- [Beaumont / Port Arthur](https://fuelhaulers.live/terminals/beaumont-port-arthur/): 8 terminals
+- [East Texas](https://fuelhaulers.live/terminals/east-texas/): 5 terminals
+- [El Paso](https://fuelhaulers.live/terminals/el-paso/): 4 terminals
+- [Permian Basin](https://fuelhaulers.live/terminals/permian-basin/): 6 terminals
+- [Abilene / San Angelo](https://fuelhaulers.live/terminals/abilene-san-angelo/): 3 terminals
+- [Lubbock](https://fuelhaulers.live/terminals/lubbock/): 3 terminals
+- [Amarillo / Panhandle](https://fuelhaulers.live/terminals/amarillo-panhandle/): 5 terminals
+- [Wichita Falls](https://fuelhaulers.live/terminals/wichita-falls/): 1 terminal
+- [Victoria](https://fuelhaulers.live/terminals/victoria/): 1 terminal
+
+## Facts
+- What is fuelhaulers.live? A free site and phone app where fuel haulers share live fuel rack and terminal wait times, plus a free HOS recap calculator, city chat, scale reports, and fuel hauling jobs.
+- Is fuelhaulers.live free? Yes. Reading reports and using the HOS Recap calculator are free with no account. A free account is only needed to post rack reports, chat, or message drivers.
+- Where do the rack wait times come from? From drivers who are at the rack. Each report shows how busy the terminal is, lanes down, product outages, the wait time, and how long ago it was posted. When nobody has posted recently, the terminal shows its usual busy hours from past reports.
+- Which fuel terminals does it cover? 129 fuel racks and terminals across Texas and Utah, including San Antonio, Houston, Dallas, Austin, Corpus Christi, El Paso, the Permian Basin, and Salt Lake City.
+- Can I use it on my phone like an app? Yes. Open fuelhaulers.live on your phone and tap Install. On iPhone, tap Share, then Add to Home Screen. There is nothing to download from an app store.
+- Does the HOS Recap calculator save my hours online? No. Your hours save only on your own phone. Nothing is sent to fuelhaulers.live or anyone else.

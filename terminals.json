@@ -1,0 +1,1299 @@
+{
+ "name": "fuelhaulers.live fuel terminal list",
+ "url": "https://fuelhaulers.live/terminals/",
+ "updated": "2026-11-23",
+ "note": "Fuel racks and truck loading terminals covered by fuelhaulers.live. Texas and Utah terminal numbers (TCN) follow the IRS approved terminal list. Live wait times are at https://fuelhaulers.live/.",
+ "count": 129,
+ "terminals": [
+  {
+   "name": "Flint Hills Resources",
+   "address": "498 Pop Gunn Dr, San Antonio, TX",
+   "city": "San Antonio",
+   "state": "TX",
+   "area": "San Antonio",
+   "tcn": "T-74-TX-2742",
+   "page": "https://fuelhaulers.live/racks/flint-hills-resources-san-antonio/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2742"
+  },
+  {
+   "name": "Chevron Salt Lake",
+   "address": "2350 N 1100 W, Salt Lake City, UT",
+   "city": "Salt Lake City",
+   "state": "UT",
+   "area": "Salt Lake City",
+   "tcn": "T-87-UT-4203",
+   "page": "https://fuelhaulers.live/racks/chevron-salt-lake-salt-lake-city/",
+   "live": "https://fuelhaulers.live/?rack=T-87-UT-4203"
+  },
+  {
+   "name": "Marathon (Tesoro) Salt Lake City",
+   "address": "474 W 900 N, Salt Lake City, UT",
+   "city": "Salt Lake City",
+   "state": "UT",
+   "area": "Salt Lake City",
+   "tcn": "T-87-UT-4202",
+   "page": "https://fuelhaulers.live/racks/marathon-tesoro-salt-lake-city-salt-lake-city/",
+   "live": "https://fuelhaulers.live/?rack=T-87-UT-4202"
+  },
+  {
+   "name": "Big West Oil",
+   "address": "333 W Center St, North Salt Lake, UT",
+   "city": "North Salt Lake",
+   "state": "UT",
+   "area": "Salt Lake City",
+   "tcn": "T-87-UT-4200",
+   "page": "https://fuelhaulers.live/racks/big-west-oil-north-salt-lake/",
+   "live": "https://fuelhaulers.live/?rack=T-87-UT-4200"
+  },
+  {
+   "name": "Phillips 66 North Salt Lake",
+   "address": "245 E 1100 N, North Salt Lake, UT",
+   "city": "North Salt Lake",
+   "state": "UT",
+   "area": "Salt Lake City",
+   "tcn": "T-87-UT-4204",
+   "page": "https://fuelhaulers.live/racks/phillips-66-north-salt-lake-north-salt-lake/",
+   "live": "https://fuelhaulers.live/?rack=T-87-UT-4204"
+  },
+  {
+   "name": "HF Sinclair Woods Cross",
+   "address": "393 S 800 W, Woods Cross, UT",
+   "city": "Woods Cross",
+   "state": "UT",
+   "area": "Salt Lake City",
+   "tcn": "T-87-UT-4208",
+   "page": "https://fuelhaulers.live/racks/hf-sinclair-woods-cross-woods-cross/",
+   "live": "https://fuelhaulers.live/?rack=T-87-UT-4208"
+  },
+  {
+   "name": "Silver Eagle Refining",
+   "address": "2355 S 1100 W, Woods Cross, UT",
+   "city": "Woods Cross",
+   "state": "UT",
+   "area": "Salt Lake City",
+   "tcn": "T-87-UT-4205",
+   "page": "https://fuelhaulers.live/racks/silver-eagle-refining-woods-cross/",
+   "live": "https://fuelhaulers.live/?rack=T-87-UT-4205"
+  },
+  {
+   "name": "UNEV Cedar City",
+   "address": "4410 N Wecco Rd, Cedar City, UT",
+   "city": "Cedar City",
+   "state": "UT",
+   "area": "Cedar City / St. George",
+   "tcn": "T-87-UT-4207",
+   "page": "https://fuelhaulers.live/racks/unev-cedar-city-cedar-city/",
+   "live": "https://fuelhaulers.live/?rack=T-87-UT-4207"
+  },
+  {
+   "name": "Enterprise Grand Junction Terminal",
+   "address": "167 Young's Grainery Rd, Cisco, UT",
+   "city": "Cisco",
+   "state": "UT",
+   "area": "Cisco / Grand Junction",
+   "tcn": "T-87-UT-4209",
+   "page": "https://fuelhaulers.live/racks/enterprise-grand-junction-terminal-cisco/",
+   "live": "https://fuelhaulers.live/?rack=T-87-UT-4209"
+  },
+  {
+   "name": "Flint Hills Resources (Cornerway)",
+   "address": "4800 Cornerway Blvd, San Antonio, TX",
+   "city": "San Antonio",
+   "state": "TX",
+   "area": "San Antonio",
+   "tcn": "T-74-TX-2760",
+   "page": "https://fuelhaulers.live/racks/flint-hills-resources-cornerway-san-antonio/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2760"
+  },
+  {
+   "name": "CITGO San Antonio",
+   "address": "4851 Emil Rd, San Antonio, TX",
+   "city": "San Antonio",
+   "state": "TX",
+   "area": "San Antonio",
+   "tcn": "T-74-TX-2737",
+   "page": "https://fuelhaulers.live/racks/citgo-san-antonio-san-antonio/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2737"
+  },
+  {
+   "name": "Global Companies",
+   "address": "510 Petroleum Dr, San Antonio, TX",
+   "city": "San Antonio",
+   "state": "TX",
+   "area": "San Antonio",
+   "tcn": "T-74-TX-2745",
+   "page": "https://fuelhaulers.live/racks/global-companies-san-antonio/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2745"
+  },
+  {
+   "name": "ExxonMobil Pipeline",
+   "address": "3214 N Pan Am Expy, San Antonio, TX",
+   "city": "San Antonio",
+   "state": "TX",
+   "area": "San Antonio",
+   "tcn": "T-74-TX-2740",
+   "page": "https://fuelhaulers.live/racks/exxonmobil-pipeline-san-antonio/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2740"
+  },
+  {
+   "name": "NuStar San Antonio East",
+   "address": "4719 Corner Pkwy, San Antonio, TX",
+   "city": "San Antonio",
+   "state": "TX",
+   "area": "San Antonio",
+   "tcn": "T-74-TX-2738",
+   "page": "https://fuelhaulers.live/racks/nustar-san-antonio-east-san-antonio/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2738"
+  },
+  {
+   "name": "NuStar San Antonio South",
+   "address": "10619 Hwy 281 S, San Antonio, TX",
+   "city": "San Antonio",
+   "state": "TX",
+   "area": "San Antonio",
+   "tcn": "T-74-TX-2739",
+   "page": "https://fuelhaulers.live/racks/nustar-san-antonio-south-san-antonio/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2739"
+  },
+  {
+   "name": "San Antonio Refinery",
+   "address": "7811 S Presa St, San Antonio, TX",
+   "city": "San Antonio",
+   "state": "TX",
+   "area": "San Antonio",
+   "tcn": "T-74-TX-2712",
+   "page": "https://fuelhaulers.live/racks/san-antonio-refinery-san-antonio/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2712"
+  },
+  {
+   "name": "Diamond Shamrock Three Rivers",
+   "address": "301 Leroy St, Three Rivers, TX",
+   "city": "Three Rivers",
+   "state": "TX",
+   "area": "San Antonio",
+   "tcn": "T-74-TX-2747",
+   "page": "https://fuelhaulers.live/racks/diamond-shamrock-three-rivers-three-rivers/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2747"
+  },
+  {
+   "name": "Lazarus Energy",
+   "address": "11372 US Hwy 87 E, Nixon, TX",
+   "city": "Nixon",
+   "state": "TX",
+   "area": "San Antonio",
+   "tcn": "T-74-TX-2759",
+   "page": "https://fuelhaulers.live/racks/lazarus-energy-nixon/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2759"
+  },
+  {
+   "name": "CITGO Luling",
+   "address": "5120 FM Rd 2, Luling, TX",
+   "city": "Luling",
+   "state": "TX",
+   "area": "San Antonio",
+   "tcn": "T-74-TX-2771",
+   "page": "https://fuelhaulers.live/racks/citgo-luling-luling/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2771"
+  },
+  {
+   "name": "Flint Hills Resources Austin",
+   "address": "9011 Johnny Morris Rd, Austin, TX",
+   "city": "Austin",
+   "state": "TX",
+   "area": "Austin",
+   "tcn": "T-74-TX-2706",
+   "page": "https://fuelhaulers.live/racks/flint-hills-resources-austin-austin/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2706"
+  },
+  {
+   "name": "Mustang Ridge Fuels Terminal",
+   "address": "1165 E Lone Star Dr, Buda, TX",
+   "city": "Buda",
+   "state": "TX",
+   "area": "Austin",
+   "tcn": "T-74-TX-2758",
+   "page": "https://fuelhaulers.live/racks/mustang-ridge-fuels-terminal-buda/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2758"
+  },
+  {
+   "name": "Flint Hills Resources Bastrop",
+   "address": "115 Mt Olive Rd, Cedar Creek, TX",
+   "city": "Cedar Creek",
+   "state": "TX",
+   "area": "Austin",
+   "tcn": "T-74-TX-2752",
+   "page": "https://fuelhaulers.live/racks/flint-hills-resources-bastrop-cedar-creek/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2752"
+  },
+  {
+   "name": "Flint Hills Resources Taylor",
+   "address": "11496 Chandler Rd, Taylor, TX",
+   "city": "Taylor",
+   "state": "TX",
+   "area": "Austin",
+   "tcn": "T-74-TX-2765",
+   "page": "https://fuelhaulers.live/racks/flint-hills-resources-taylor-taylor/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2765"
+  },
+  {
+   "name": "Valero Taylor Terminal",
+   "address": "12992 Chandler Rd, Taylor, TX",
+   "city": "Taylor",
+   "state": "TX",
+   "area": "Austin",
+   "tcn": "T-75-TX-2696",
+   "page": "https://fuelhaulers.live/racks/valero-taylor-terminal-taylor/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2696"
+  },
+  {
+   "name": "Chevron Galena Park",
+   "address": "12523 American Petroleum Rd, Galena Park, TX",
+   "city": "Galena Park",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2789",
+   "page": "https://fuelhaulers.live/racks/chevron-galena-park-galena-park/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2789"
+  },
+  {
+   "name": "Magellan Galena Park",
+   "address": "12901 American Petroleum Rd, Galena Park, TX",
+   "city": "Galena Park",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2792",
+   "page": "https://fuelhaulers.live/racks/magellan-galena-park-galena-park/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2792"
+  },
+  {
+   "name": "Kinder Morgan (906 Clinton)",
+   "address": "906 Clinton Dr, Galena Park, TX",
+   "city": "Galena Park",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2788",
+   "page": "https://fuelhaulers.live/racks/kinder-morgan-906-clinton-galena-park/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2788"
+  },
+  {
+   "name": "Kinder Morgan (1500 Clinton)",
+   "address": "1500 Clinton Dr, Galena Park, TX",
+   "city": "Galena Park",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2819",
+   "page": "https://fuelhaulers.live/racks/kinder-morgan-1500-clinton-galena-park/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2819"
+  },
+  {
+   "name": "Kinder Morgan Pasadena Truck Facility",
+   "address": "400 N Jefferson, Pasadena, TX",
+   "city": "Pasadena",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2830",
+   "page": "https://fuelhaulers.live/racks/kinder-morgan-pasadena-truck-facility-pasadena/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2830"
+  },
+  {
+   "name": "Kinder Morgan (Witter)",
+   "address": "530 N Witter, Pasadena, TX",
+   "city": "Pasadena",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2809",
+   "page": "https://fuelhaulers.live/racks/kinder-morgan-witter-pasadena/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2809"
+  },
+  {
+   "name": "Phillips 66 Pasadena",
+   "address": "100 Jefferson St, Pasadena, TX",
+   "city": "Pasadena",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2811",
+   "page": "https://fuelhaulers.live/racks/phillips-66-pasadena-pasadena/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2811"
+  },
+  {
+   "name": "Enterprise Pasadena Products",
+   "address": "1500 North South St, Pasadena, TX",
+   "city": "Pasadena",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2834",
+   "page": "https://fuelhaulers.live/racks/enterprise-pasadena-products-pasadena/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2834"
+  },
+  {
+   "name": "Global Companies Pasadena",
+   "address": "1320 W Shaw St, Pasadena, TX",
+   "city": "Pasadena",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2782",
+   "page": "https://fuelhaulers.live/racks/global-companies-pasadena-pasadena/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2782"
+  },
+  {
+   "name": "Western Refining Pasadena",
+   "address": "419 N Preston Rd, Pasadena, TX",
+   "city": "Pasadena",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-74-TX-2772",
+   "page": "https://fuelhaulers.live/racks/western-refining-pasadena-pasadena/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2772"
+  },
+  {
+   "name": "MVP Terminaling",
+   "address": "3449 Pasadena Fwy, Pasadena, TX",
+   "city": "Pasadena",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2865",
+   "page": "https://fuelhaulers.live/racks/mvp-terminaling-pasadena/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2865"
+  },
+  {
+   "name": "Valero Houston",
+   "address": "9701 Manchester, Houston, TX",
+   "city": "Houston",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2806",
+   "page": "https://fuelhaulers.live/racks/valero-houston-houston/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2806"
+  },
+  {
+   "name": "ExxonMobil (North Fwy)",
+   "address": "8700 North Fwy, Houston, TX",
+   "city": "Houston",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2808",
+   "page": "https://fuelhaulers.live/racks/exxonmobil-north-fwy-houston/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2808"
+  },
+  {
+   "name": "ExxonMobil (Almeda)",
+   "address": "10501 E Almeda, Houston, TX",
+   "city": "Houston",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2812",
+   "page": "https://fuelhaulers.live/racks/exxonmobil-almeda-houston/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2812"
+  },
+  {
+   "name": "Magellan Wallisville",
+   "address": "7901 Wallisville Rd, Houston, TX",
+   "city": "Houston",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2831",
+   "page": "https://fuelhaulers.live/racks/magellan-wallisville-houston/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2831"
+  },
+  {
+   "name": "US Venture Greenspoint",
+   "address": "12325 North Fwy, Houston, TX",
+   "city": "Houston",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2794",
+   "page": "https://fuelhaulers.live/racks/us-venture-greenspoint-houston/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2794"
+  },
+  {
+   "name": "Gulf Coast Energy",
+   "address": "17617 Aldine Westfield Rd, Houston, TX",
+   "city": "Houston",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2790",
+   "page": "https://fuelhaulers.live/racks/gulf-coast-energy-houston/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2790"
+  },
+  {
+   "name": "Petroleum Wholesale",
+   "address": "1801 Collingsworth, Houston, TX",
+   "city": "Houston",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2805",
+   "page": "https://fuelhaulers.live/racks/petroleum-wholesale-houston/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2805"
+  },
+  {
+   "name": "ERPC North Houston",
+   "address": "Ferrall & E Hardy, Houston, TX",
+   "city": "Houston",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2817",
+   "page": "https://fuelhaulers.live/racks/erpc-north-houston-houston/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2817"
+  },
+  {
+   "name": "Almeda Terminal",
+   "address": "11750 Almeda Rd, Houston, TX",
+   "city": "Houston",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2871",
+   "page": "https://fuelhaulers.live/racks/almeda-terminal-houston/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2871"
+  },
+  {
+   "name": "Petromax",
+   "address": "1519 S Sheldon Rd, Houston, TX",
+   "city": "Houston",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2842",
+   "page": "https://fuelhaulers.live/racks/petromax-houston/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2842"
+  },
+  {
+   "name": "Deer Park Refining",
+   "address": "5900 Hwy 225, Deer Park, TX",
+   "city": "Deer Park",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2877",
+   "page": "https://fuelhaulers.live/racks/deer-park-refining-deer-park/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2877"
+  },
+  {
+   "name": "LBC Houston",
+   "address": "11666 Port Rd, Seabrook, TX",
+   "city": "Seabrook",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2780",
+   "page": "https://fuelhaulers.live/racks/lbc-houston-seabrook/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2780"
+  },
+  {
+   "name": "Magellan Dallas",
+   "address": "4200 Singleton Blvd, Dallas, TX",
+   "city": "Dallas",
+   "state": "TX",
+   "area": "Dallas",
+   "tcn": "T-75-TX-2661",
+   "page": "https://fuelhaulers.live/racks/magellan-dallas-dallas/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2661"
+  },
+  {
+   "name": "Global Companies Dallas",
+   "address": "3900 Singleton Blvd, Dallas, TX",
+   "city": "Dallas",
+   "state": "TX",
+   "area": "Dallas",
+   "tcn": "T-75-TX-2662",
+   "page": "https://fuelhaulers.live/racks/global-companies-dallas-dallas/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2662"
+  },
+  {
+   "name": "ExxonMobil Irving",
+   "address": "1201 E Airport Fwy, Irving, TX",
+   "city": "Irving",
+   "state": "TX",
+   "area": "Dallas",
+   "tcn": "T-75-TX-2660",
+   "page": "https://fuelhaulers.live/racks/exxonmobil-irving-irving/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2660"
+  },
+  {
+   "name": "Flint Hills Resources Fort Worth",
+   "address": "12550 Trinity Blvd, Euless, TX",
+   "city": "Euless",
+   "state": "TX",
+   "area": "Dallas",
+   "tcn": "T-75-TX-2664",
+   "page": "https://fuelhaulers.live/racks/flint-hills-resources-fort-worth-euless/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2664"
+  },
+  {
+   "name": "Sunoco Euless",
+   "address": "12625 Calloway Cemetery Rd, Euless, TX",
+   "city": "Euless",
+   "state": "TX",
+   "area": "Dallas",
+   "tcn": "T-75-TX-2690",
+   "page": "https://fuelhaulers.live/racks/sunoco-euless-euless/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2690"
+  },
+  {
+   "name": "NuStar Southlake",
+   "address": "1700 Hwy 26, Grapevine, TX",
+   "city": "Grapevine",
+   "state": "TX",
+   "area": "Dallas",
+   "tcn": "T-75-TX-2680",
+   "page": "https://fuelhaulers.live/racks/nustar-southlake-grapevine/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2680"
+  },
+  {
+   "name": "US Venture Fort Worth (Brennan)",
+   "address": "2525 Brennan St, Fort Worth, TX",
+   "city": "Fort Worth",
+   "state": "TX",
+   "area": "Dallas",
+   "tcn": "T-75-TX-2666",
+   "page": "https://fuelhaulers.live/racks/us-venture-fort-worth-brennan-fort-worth/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2666"
+  },
+  {
+   "name": "US Venture Fort Worth (Terminal Rd)",
+   "address": "301 Terminal Rd, Fort Worth, TX",
+   "city": "Fort Worth",
+   "state": "TX",
+   "area": "Dallas",
+   "tcn": "T-75-TX-2667",
+   "page": "https://fuelhaulers.live/racks/us-venture-fort-worth-terminal-rd-fort-worth/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2667"
+  },
+  {
+   "name": "Global Companies Fort Worth",
+   "address": "3200 N Sylvania, Fort Worth, TX",
+   "city": "Fort Worth",
+   "state": "TX",
+   "area": "Dallas",
+   "tcn": "T-75-TX-2669",
+   "page": "https://fuelhaulers.live/racks/global-companies-fort-worth-fort-worth/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2669"
+  },
+  {
+   "name": "Magellan Aledo",
+   "address": "6000 IH 20, Aledo, TX",
+   "city": "Aledo",
+   "state": "TX",
+   "area": "Dallas",
+   "tcn": "T-75-TX-2665",
+   "page": "https://fuelhaulers.live/racks/magellan-aledo-aledo/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2665"
+  },
+  {
+   "name": "Sunoco Caddo Mills",
+   "address": "2738 County Rd 2168, Caddo Mills, TX",
+   "city": "Caddo Mills",
+   "state": "TX",
+   "area": "Dallas",
+   "tcn": "T-75-TX-2659",
+   "page": "https://fuelhaulers.live/racks/sunoco-caddo-mills-caddo-mills/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2659"
+  },
+  {
+   "name": "US Venture Melissa",
+   "address": "160 County Rd 160, Melissa, TX",
+   "city": "Melissa",
+   "state": "TX",
+   "area": "Dallas",
+   "tcn": "T-75-TX-2697",
+   "page": "https://fuelhaulers.live/racks/us-venture-melissa-melissa/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2697"
+  },
+  {
+   "name": "Valero Corpus Christi",
+   "address": "5900 Up River Rd, Corpus Christi, TX",
+   "city": "Corpus Christi",
+   "state": "TX",
+   "area": "Corpus Christi",
+   "tcn": "T-74-TX-2714",
+   "page": "https://fuelhaulers.live/racks/valero-corpus-christi-corpus-christi/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2714"
+  },
+  {
+   "name": "CITGO Corpus Christi",
+   "address": "1308 Oak Park Ave, Corpus Christi, TX",
+   "city": "Corpus Christi",
+   "state": "TX",
+   "area": "Corpus Christi",
+   "tcn": "T-74-TX-2716",
+   "page": "https://fuelhaulers.live/racks/citgo-corpus-christi-corpus-christi/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2716"
+  },
+  {
+   "name": "Flint Hills Resources Corpus Christi",
+   "address": "2825 Suntide Rd, Corpus Christi, TX",
+   "city": "Corpus Christi",
+   "state": "TX",
+   "area": "Corpus Christi",
+   "tcn": "T-74-TX-2721",
+   "page": "https://fuelhaulers.live/racks/flint-hills-resources-corpus-christi-corpus-christi/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2721"
+  },
+  {
+   "name": "Enterprise GC",
+   "address": "5032 Up River Rd, Corpus Christi, TX",
+   "city": "Corpus Christi",
+   "state": "TX",
+   "area": "Corpus Christi",
+   "tcn": "T-74-TX-2767",
+   "page": "https://fuelhaulers.live/racks/enterprise-gc-corpus-christi/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2767"
+  },
+  {
+   "name": "Magellan Corpus Christi",
+   "address": "1802 Poth Ln, Corpus Christi, TX",
+   "city": "Corpus Christi",
+   "state": "TX",
+   "area": "Corpus Christi",
+   "tcn": "T-76-TX-2846",
+   "page": "https://fuelhaulers.live/racks/magellan-corpus-christi-corpus-christi/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2846"
+  },
+  {
+   "name": "Buckeye Texas Hub",
+   "address": "7002 Marvin L Berry Rd, Corpus Christi, TX",
+   "city": "Corpus Christi",
+   "state": "TX",
+   "area": "Corpus Christi",
+   "tcn": "T-76-TX-2838",
+   "page": "https://fuelhaulers.live/racks/buckeye-texas-hub-corpus-christi/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2838"
+  },
+  {
+   "name": "NuStar Laredo",
+   "address": "13380 S Unitec Dr, Laredo, TX",
+   "city": "Laredo",
+   "state": "TX",
+   "area": "Laredo",
+   "tcn": "T-74-TX-2715",
+   "page": "https://fuelhaulers.live/racks/nustar-laredo-laredo/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2715"
+  },
+  {
+   "name": "NuStar Edinburg",
+   "address": "222 W Ingle Rd, Edinburg, TX",
+   "city": "Edinburg",
+   "state": "TX",
+   "area": "Rio Grande Valley",
+   "tcn": "T-74-TX-2700",
+   "page": "https://fuelhaulers.live/racks/nustar-edinburg-edinburg/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2700"
+  },
+  {
+   "name": "Delmita Terminal",
+   "address": "1189 FM 2294, Delmita, TX",
+   "city": "Delmita",
+   "state": "TX",
+   "area": "Rio Grande Valley",
+   "tcn": "T-74-TX-2768",
+   "page": "https://fuelhaulers.live/racks/delmita-terminal-delmita/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2768"
+  },
+  {
+   "name": "NuStar Harlingen",
+   "address": "Hwy 106, 4.5 mi east, Harlingen, TX",
+   "city": "Harlingen",
+   "state": "TX",
+   "area": "Rio Grande Valley",
+   "tcn": "T-74-TX-2729",
+   "page": "https://fuelhaulers.live/racks/nustar-harlingen-harlingen/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2729"
+  },
+  {
+   "name": "Titan Fuel Terminal (Port Rd)",
+   "address": "24581 E Port Rd, Harlingen, TX",
+   "city": "Harlingen",
+   "state": "TX",
+   "area": "Rio Grande Valley",
+   "tcn": "T-76-TX-2864",
+   "page": "https://fuelhaulers.live/racks/titan-fuel-terminal-port-rd-harlingen/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2864"
+  },
+  {
+   "name": "Titan Fuel Terminals (FM 160)",
+   "address": "26792 FM 160, Harlingen, TX",
+   "city": "Harlingen",
+   "state": "TX",
+   "area": "Rio Grande Valley",
+   "tcn": "T-74-TX-2770",
+   "page": "https://fuelhaulers.live/racks/titan-fuel-terminals-fm-160-harlingen/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2770"
+  },
+  {
+   "name": "CITGO Brownsville",
+   "address": "11001 R.L. Ostos Rd, Brownsville, TX",
+   "city": "Brownsville",
+   "state": "TX",
+   "area": "Rio Grande Valley",
+   "tcn": "T-74-TX-2709",
+   "page": "https://fuelhaulers.live/racks/citgo-brownsville-brownsville/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2709"
+  },
+  {
+   "name": "Motus TI",
+   "address": "14301 R.L. Ostos Rd, Brownsville, TX",
+   "city": "Brownsville",
+   "state": "TX",
+   "area": "Rio Grande Valley",
+   "tcn": "T-74-TX-2761",
+   "page": "https://fuelhaulers.live/racks/motus-ti-brownsville/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2761"
+  },
+  {
+   "name": "TransMontaigne SouthWest",
+   "address": "10150 State Hwy 48, Brownsville, TX",
+   "city": "Brownsville",
+   "state": "TX",
+   "area": "Rio Grande Valley",
+   "tcn": "T-74-TX-2717",
+   "page": "https://fuelhaulers.live/racks/transmontaigne-southwest-brownsville/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2717"
+  },
+  {
+   "name": "TransMontaigne Border",
+   "address": "8700 State Hwy 48, Brownsville, TX",
+   "city": "Brownsville",
+   "state": "TX",
+   "area": "Rio Grande Valley",
+   "tcn": "T-74-TX-2754",
+   "page": "https://fuelhaulers.live/racks/transmontaigne-border-brownsville/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2754"
+  },
+  {
+   "name": "TransMontaigne Tejano",
+   "address": "6200 State Hwy 48, Brownsville, TX",
+   "city": "Brownsville",
+   "state": "TX",
+   "area": "Rio Grande Valley",
+   "tcn": "T-74-TX-2755",
+   "page": "https://fuelhaulers.live/racks/transmontaigne-tejano-brownsville/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2755"
+  },
+  {
+   "name": "Brownsville Terminal",
+   "address": "9351 Old State Hwy 58, Brownsville, TX",
+   "city": "Brownsville",
+   "state": "TX",
+   "area": "Rio Grande Valley",
+   "tcn": "T-74-TX-2769",
+   "page": "https://fuelhaulers.live/racks/brownsville-terminal-brownsville/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2769"
+  },
+  {
+   "name": "Global Companies Waco",
+   "address": "420 S Lacy Dr, Waco, TX",
+   "city": "Waco",
+   "state": "TX",
+   "area": "Waco / Bryan",
+   "tcn": "T-74-TX-2705",
+   "page": "https://fuelhaulers.live/racks/global-companies-waco-waco/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2705"
+  },
+  {
+   "name": "Flint Hills Resources Waco",
+   "address": "2017 Kendall Ln, Waco, TX",
+   "city": "Waco",
+   "state": "TX",
+   "area": "Waco / Bryan",
+   "tcn": "T-74-TX-2707",
+   "page": "https://fuelhaulers.live/racks/flint-hills-resources-waco-waco/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2707"
+  },
+  {
+   "name": "Fikes Wholesale Waco",
+   "address": "1600 S Loop Dr, Waco, TX",
+   "city": "Waco",
+   "state": "TX",
+   "area": "Waco / Bryan",
+   "tcn": "T-74-TX-2749",
+   "page": "https://fuelhaulers.live/racks/fikes-wholesale-waco-waco/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2749"
+  },
+  {
+   "name": "Magellan Mertens",
+   "address": "2115 E Hwy 22, Mertens, TX",
+   "city": "Mertens",
+   "state": "TX",
+   "area": "Waco / Bryan",
+   "tcn": "T-76-TX-2833",
+   "page": "https://fuelhaulers.live/racks/magellan-mertens-mertens/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2833"
+  },
+  {
+   "name": "Energy Transfer Hearne",
+   "address": "Hwy 6 South, Hearne, TX",
+   "city": "Hearne",
+   "state": "TX",
+   "area": "Waco / Bryan",
+   "tcn": "T-74-TX-2658",
+   "page": "https://fuelhaulers.live/racks/energy-transfer-hearne-hearne/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2658"
+  },
+  {
+   "name": "Global Companies Hearne",
+   "address": "Hwy 6 South, Hearne, TX",
+   "city": "Hearne",
+   "state": "TX",
+   "area": "Waco / Bryan",
+   "tcn": "T-74-TX-2702",
+   "page": "https://fuelhaulers.live/racks/global-companies-hearne-hearne/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2702"
+  },
+  {
+   "name": "US Venture Bryan",
+   "address": "1714 Finfeather Rd, Bryan, TX",
+   "city": "Bryan",
+   "state": "TX",
+   "area": "Waco / Bryan",
+   "tcn": "T-74-TX-2713",
+   "page": "https://fuelhaulers.live/racks/us-venture-bryan-bryan/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2713"
+  },
+  {
+   "name": "Global Companies Beaumont",
+   "address": "9406 W Port Arthur Rd, Beaumont, TX",
+   "city": "Beaumont",
+   "state": "TX",
+   "area": "Beaumont / Port Arthur",
+   "tcn": "T-76-TX-2783",
+   "page": "https://fuelhaulers.live/racks/global-companies-beaumont-beaumont/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2783"
+  },
+  {
+   "name": "Energy Transfer Beaumont",
+   "address": "15651 W Port Arthur Rd, Beaumont, TX",
+   "city": "Beaumont",
+   "state": "TX",
+   "area": "Beaumont / Port Arthur",
+   "tcn": "T-76-TX-2798",
+   "page": "https://fuelhaulers.live/racks/energy-transfer-beaumont-beaumont/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2798"
+  },
+  {
+   "name": "Phillips 66 Nederland",
+   "address": "Hwy 366, Nederland, TX",
+   "city": "Nederland",
+   "state": "TX",
+   "area": "Beaumont / Port Arthur",
+   "tcn": "T-76-TX-2787",
+   "page": "https://fuelhaulers.live/racks/phillips-66-nederland-nederland/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2787"
+  },
+  {
+   "name": "Enterprise Refined Products Vidor",
+   "address": "19295 Old Mansfield Ferry Rd, Vidor, TX",
+   "city": "Vidor",
+   "state": "TX",
+   "area": "Beaumont / Port Arthur",
+   "tcn": "T-76-TX-2851",
+   "page": "https://fuelhaulers.live/racks/enterprise-refined-products-vidor-vidor/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2851"
+  },
+  {
+   "name": "Premcor Refining Port Arthur",
+   "address": "1801 Gulfway Dr, Port Arthur, TX",
+   "city": "Port Arthur",
+   "state": "TX",
+   "area": "Beaumont / Port Arthur",
+   "tcn": "T-76-TX-2854",
+   "page": "https://fuelhaulers.live/racks/premcor-refining-port-arthur-port-arthur/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2854"
+  },
+  {
+   "name": "Martin Operating Port Arthur",
+   "address": "2420 Dowling Rd, Port Arthur, TX",
+   "city": "Port Arthur",
+   "state": "TX",
+   "area": "Beaumont / Port Arthur",
+   "tcn": "T-76-TX-2836",
+   "page": "https://fuelhaulers.live/racks/martin-operating-port-arthur-port-arthur/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2836"
+  },
+  {
+   "name": "Monument Terminal Port Arthur",
+   "address": "2450 S Gulfway Dr, Port Arthur, TX",
+   "city": "Port Arthur",
+   "state": "TX",
+   "area": "Beaumont / Port Arthur",
+   "tcn": "T-76-TX-2878",
+   "page": "https://fuelhaulers.live/racks/monument-terminal-port-arthur-port-arthur/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2878"
+  },
+  {
+   "name": "Port Neches Terminal",
+   "address": "2102 Spur 136, Port Neches, TX",
+   "city": "Port Neches",
+   "state": "TX",
+   "area": "Beaumont / Port Arthur",
+   "tcn": "T-76-TX-2879",
+   "page": "https://fuelhaulers.live/racks/port-neches-terminal-port-neches/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2879"
+  },
+  {
+   "name": "Delek Logistics Tyler",
+   "address": "425 McMurrey Dr, Tyler, TX",
+   "city": "Tyler",
+   "state": "TX",
+   "area": "East Texas",
+   "tcn": "T-75-TX-2681",
+   "page": "https://fuelhaulers.live/racks/delek-logistics-tyler-tyler/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2681"
+  },
+  {
+   "name": "Delek Big Sandy",
+   "address": "Hwy 155 & Sabine River, Big Sandy, TX",
+   "city": "Big Sandy",
+   "state": "TX",
+   "area": "East Texas",
+   "tcn": "T-76-TX-2784",
+   "page": "https://fuelhaulers.live/racks/delek-big-sandy-big-sandy/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2784"
+  },
+  {
+   "name": "Delek Mount Pleasant",
+   "address": "1503 W Ferguson Rd, Mount Pleasant, TX",
+   "city": "Mount Pleasant",
+   "state": "TX",
+   "area": "East Texas",
+   "tcn": "T-75-TX-2676",
+   "page": "https://fuelhaulers.live/racks/delek-mount-pleasant-mount-pleasant/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2676"
+  },
+  {
+   "name": "Energy Transfer Waskom",
+   "address": "9 South, Waskom, TX",
+   "city": "Waskom",
+   "state": "TX",
+   "area": "East Texas",
+   "tcn": "T-75-TX-2688",
+   "page": "https://fuelhaulers.live/racks/energy-transfer-waskom-waskom/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2688"
+  },
+  {
+   "name": "Energy Transfer Center",
+   "address": "377 State Hwy 87 S, Center, TX",
+   "city": "Center",
+   "state": "TX",
+   "area": "East Texas",
+   "tcn": "T-75-TX-2678",
+   "page": "https://fuelhaulers.live/racks/energy-transfer-center-center/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2678"
+  },
+  {
+   "name": "Western Refining El Paso",
+   "address": "6501 Trowbridge Dr, El Paso, TX",
+   "city": "El Paso",
+   "state": "TX",
+   "area": "El Paso",
+   "tcn": "T-74-TX-2724",
+   "page": "https://fuelhaulers.live/racks/western-refining-el-paso-el-paso/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2724"
+  },
+  {
+   "name": "Holly Energy El Paso",
+   "address": "1000 Eastside Rd, El Paso, TX",
+   "city": "El Paso",
+   "state": "TX",
+   "area": "El Paso",
+   "tcn": "T-74-TX-2726",
+   "page": "https://fuelhaulers.live/racks/holly-energy-el-paso-el-paso/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2726"
+  },
+  {
+   "name": "NuStar El Paso",
+   "address": "4200 J.C. Vera Montes, El Paso, TX",
+   "city": "El Paso",
+   "state": "TX",
+   "area": "El Paso",
+   "tcn": "T-74-TX-2750",
+   "page": "https://fuelhaulers.live/racks/nustar-el-paso-el-paso/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2750"
+  },
+  {
+   "name": "Magellan El Paso",
+   "address": "13551 E Montana Ave, El Paso, TX",
+   "city": "El Paso",
+   "state": "TX",
+   "area": "El Paso",
+   "tcn": "T-74-TX-2751",
+   "page": "https://fuelhaulers.live/racks/magellan-el-paso-el-paso/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2751"
+  },
+  {
+   "name": "Magellan Midland",
+   "address": "1407 S County Rd 1140, Midland, TX",
+   "city": "Midland",
+   "state": "TX",
+   "area": "Permian Basin",
+   "tcn": "T-74-TX-2766",
+   "page": "https://fuelhaulers.live/racks/magellan-midland-midland/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2766"
+  },
+  {
+   "name": "Magellan Odessa",
+   "address": "2700 S Grandview Ave, Odessa, TX",
+   "city": "Odessa",
+   "state": "TX",
+   "area": "Permian Basin",
+   "tcn": "T-75-TX-2685",
+   "page": "https://fuelhaulers.live/racks/magellan-odessa-odessa/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2685"
+  },
+  {
+   "name": "Energy Transfer Stanton",
+   "address": "2927 I-20 Frontage Rd, Stanton, TX",
+   "city": "Stanton",
+   "state": "TX",
+   "area": "Permian Basin",
+   "tcn": "T-74-TX-2764",
+   "page": "https://fuelhaulers.live/racks/energy-transfer-stanton-stanton/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2764"
+  },
+  {
+   "name": "DKL Big Spring",
+   "address": "E I-20 & Refinery Rd, Big Spring, TX",
+   "city": "Big Spring",
+   "state": "TX",
+   "area": "Permian Basin",
+   "tcn": "T-75-TX-2656",
+   "page": "https://fuelhaulers.live/racks/dkl-big-spring-big-spring/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2656"
+  },
+  {
+   "name": "Holly Energy Orla",
+   "address": "40231 FM 3541, Orla, TX",
+   "city": "Orla",
+   "state": "TX",
+   "area": "Permian Basin",
+   "tcn": "T-74-TX-2762",
+   "page": "https://fuelhaulers.live/racks/holly-energy-orla-orla/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2762"
+  },
+  {
+   "name": "Permian Terminal Seminole",
+   "address": "1901 County Rd 206, Seminole, TX",
+   "city": "Seminole",
+   "state": "TX",
+   "area": "Permian Basin",
+   "tcn": "T-75-TX-2698",
+   "page": "https://fuelhaulers.live/racks/permian-terminal-seminole-seminole/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2698"
+  },
+  {
+   "name": "Delek Abilene",
+   "address": "8050 PR 314, Abilene, TX",
+   "city": "Abilene",
+   "state": "TX",
+   "area": "Abilene / San Angelo",
+   "tcn": "T-75-TX-2686",
+   "page": "https://fuelhaulers.live/racks/delek-abilene-abilene/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2686"
+  },
+  {
+   "name": "Holly Energy Tye",
+   "address": "1000 S Service Rd, Tye, TX",
+   "city": "Tye",
+   "state": "TX",
+   "area": "Abilene / San Angelo",
+   "tcn": "T-74-TX-2748",
+   "page": "https://fuelhaulers.live/racks/holly-energy-tye-tye/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2748"
+  },
+  {
+   "name": "Delek San Angelo",
+   "address": "4008 N US 67, San Angelo, TX",
+   "city": "San Angelo",
+   "state": "TX",
+   "area": "Abilene / San Angelo",
+   "tcn": "T-75-TX-2652",
+   "page": "https://fuelhaulers.live/racks/delek-san-angelo-san-angelo/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2652"
+  },
+  {
+   "name": "Phillips 66 Lubbock",
+   "address": "Clovis Rd & Flint Ave, Lubbock, TX",
+   "city": "Lubbock",
+   "state": "TX",
+   "area": "Lubbock",
+   "tcn": "T-75-TX-2674",
+   "page": "https://fuelhaulers.live/racks/phillips-66-lubbock-lubbock/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2674"
+  },
+  {
+   "name": "Pro Petroleum Lubbock",
+   "address": "3002 Clovis Rd, Lubbock, TX",
+   "city": "Lubbock",
+   "state": "TX",
+   "area": "Lubbock",
+   "tcn": "T-75-TX-2694",
+   "page": "https://fuelhaulers.live/racks/pro-petroleum-lubbock-lubbock/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2694"
+  },
+  {
+   "name": "NuStar Abernathy",
+   "address": "Hwy 54, Abernathy, TX",
+   "city": "Abernathy",
+   "state": "TX",
+   "area": "Lubbock",
+   "tcn": "T-75-TX-2650",
+   "page": "https://fuelhaulers.live/racks/nustar-abernathy-abernathy/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2650"
+  },
+  {
+   "name": "NuStar Amarillo",
+   "address": "4200 W Cliffside Dr, Amarillo, TX",
+   "city": "Amarillo",
+   "state": "TX",
+   "area": "Amarillo / Panhandle",
+   "tcn": "T-75-TX-2653",
+   "page": "https://fuelhaulers.live/racks/nustar-amarillo-amarillo/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2653"
+  },
+  {
+   "name": "Phillips 66 Amarillo",
+   "address": "4300 W Cliffside Rd, Amarillo, TX",
+   "city": "Amarillo",
+   "state": "TX",
+   "area": "Amarillo / Panhandle",
+   "tcn": "T-75-TX-2654",
+   "page": "https://fuelhaulers.live/racks/phillips-66-amarillo-amarillo/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2654"
+  },
+  {
+   "name": "Phillips 66 Borger",
+   "address": "Spur 119 N, Borger, TX",
+   "city": "Borger",
+   "state": "TX",
+   "area": "Amarillo / Panhandle",
+   "tcn": "T-75-TX-2657",
+   "page": "https://fuelhaulers.live/racks/phillips-66-borger-borger/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2657"
+  },
+  {
+   "name": "Diamond Shamrock McKee",
+   "address": "HCR 1 Box 36, Sunray, TX",
+   "city": "Sunray",
+   "state": "TX",
+   "area": "Amarillo / Panhandle",
+   "tcn": "T-75-TX-2682",
+   "page": "https://fuelhaulers.live/racks/diamond-shamrock-mckee-sunray/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2682"
+  },
+  {
+   "name": "Valero Sunray",
+   "address": "6647 County Rd G, Sunray, TX",
+   "city": "Sunray",
+   "state": "TX",
+   "area": "Amarillo / Panhandle",
+   "tcn": "T-75-TX-2695",
+   "page": "https://fuelhaulers.live/racks/valero-sunray-sunray/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2695"
+  },
+  {
+   "name": "Holly Energy Wichita Falls",
+   "address": "301 Sinclair Blvd, Wichita Falls, TX",
+   "city": "Wichita Falls",
+   "state": "TX",
+   "area": "Wichita Falls",
+   "tcn": "T-75-TX-2683",
+   "page": "https://fuelhaulers.live/racks/holly-energy-wichita-falls-wichita-falls/",
+   "live": "https://fuelhaulers.live/?rack=T-75-TX-2683"
+  },
+  {
+   "name": "CITGO Victoria",
+   "address": "1708 N Ben Jordan Blvd, Victoria, TX",
+   "city": "Victoria",
+   "state": "TX",
+   "area": "Victoria",
+   "tcn": "T-74-TX-2703",
+   "page": "https://fuelhaulers.live/racks/citgo-victoria-victoria/",
+   "live": "https://fuelhaulers.live/?rack=T-74-TX-2703"
+  },
+  {
+   "name": "Phillips 66 Sweeny",
+   "address": "Hwys 35 & 36, Sweeny, TX",
+   "city": "Sweeny",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2813",
+   "page": "https://fuelhaulers.live/racks/phillips-66-sweeny-sweeny/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2813"
+  },
+  {
+   "name": "Martin Operating Galveston",
+   "address": "1300 Coastwise Dr, Galveston, TX",
+   "city": "Galveston",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2839",
+   "page": "https://fuelhaulers.live/racks/martin-operating-galveston-galveston/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2839"
+  },
+  {
+   "name": "Texas City Terminal",
+   "address": "760 14th St S, Texas City, TX",
+   "city": "Texas City",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2870",
+   "page": "https://fuelhaulers.live/racks/texas-city-terminal-texas-city/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2870"
+  },
+  {
+   "name": "BWC Texas City Terminals",
+   "address": "201 Dock Rd, Texas City, TX",
+   "city": "Texas City",
+   "state": "TX",
+   "area": "Houston",
+   "tcn": "T-76-TX-2856",
+   "page": "https://fuelhaulers.live/racks/bwc-texas-city-terminals-texas-city/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2856"
+  },
+  {
+   "name": "Martin Operating Aransas Pass",
+   "address": "Harbor Island Rd, Aransas Pass, TX",
+   "city": "Aransas Pass",
+   "state": "TX",
+   "area": "Corpus Christi",
+   "tcn": "T-76-TX-2848",
+   "page": "https://fuelhaulers.live/racks/martin-operating-aransas-pass-aransas-pass/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2848"
+  },
+  {
+   "name": "Redfish Bay Terminal",
+   "address": "467 E Beasley Ave, Aransas Pass, TX",
+   "city": "Aransas Pass",
+   "state": "TX",
+   "area": "Corpus Christi",
+   "tcn": "T-76-TX-2866",
+   "page": "https://fuelhaulers.live/racks/redfish-bay-terminal-aransas-pass/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2866"
+  },
+  {
+   "name": "Port Isabel Offshore Terminal",
+   "address": "1500 Port Rd, Port Isabel, TX",
+   "city": "Port Isabel",
+   "state": "TX",
+   "area": "Rio Grande Valley",
+   "tcn": "T-76-TX-2849",
+   "page": "https://fuelhaulers.live/racks/port-isabel-offshore-terminal-port-isabel/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2849"
+  },
+  {
+   "name": "ABC Gulf Coast Terminal",
+   "address": "15801 R.L. Ostos Rd, Brownsville, TX",
+   "city": "Brownsville",
+   "state": "TX",
+   "area": "Rio Grande Valley",
+   "tcn": "T-76-TX-2845",
+   "page": "https://fuelhaulers.live/racks/abc-gulf-coast-terminal-brownsville/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2845"
+  },
+  {
+   "name": "Port Harlingen Terminal",
+   "address": "24581 Port Rd, Harlingen, TX",
+   "city": "Harlingen",
+   "state": "TX",
+   "area": "Rio Grande Valley",
+   "tcn": "T-76-TX-2861",
+   "page": "https://fuelhaulers.live/racks/port-harlingen-terminal-harlingen/",
+   "live": "https://fuelhaulers.live/?rack=T-76-TX-2861"
+  }
+ ]
+}
