@@ -509,6 +509,36 @@ main>input[type=text],.regionSel{background:var(--navyDeep);color:var(--chalk);b
 @keyframes recapNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
 @media (prefers-reduced-motion:reduce){.stamp{transform:none}#tabs.pulse .navbtn .in{animation:none}.recapBtn,.recapBtn .arr{animation:none}}
 
+
+/* ==================== WHITE BACKGROUND (Nov 2026) ==================== */
+:root{--ink:#0F2436;--muted:#3E6A80;--line:rgba(15,36,54,.15);--chip:rgba(15,36,54,.06)}
+body{background-color:#ffffff;background-image:linear-gradient(rgba(15,36,54,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(15,36,54,.05) 1px,transparent 1px);background-size:48px 48px;color:#0F2436}
+a{color:#B5401C}
+.rhero h1,.section{color:#0F2436}
+.rhero p,.site-foot{color:#3E6A80}
+.card,.term,#whoBox{border:1px solid #e4ddcb;box-shadow:0 1px 3px rgba(15,36,54,.10),0 8px 22px rgba(15,36,54,.07)}
+.instCard{background:#F5F7F9;border-color:rgba(15,36,54,.14);color:#0F2436}
+.instCard .x,.dmHead .ghost,.joinCard .ghost{color:#0F2436;border-color:rgba(15,36,54,.3)}
+.joinCard{background:#FDF0EB;color:#0F2436}
+.chip{color:#0F2436;border-color:rgba(15,36,54,.3)}
+.shareLine button{color:#B5401C}
+.shareBtn{color:#0F2436}
+.seoAbout{color:#0F2436;border-top-color:rgba(15,36,54,.15)}
+.seoAbout h2{color:#C8471F}.seoAbout a{color:#B5401C}
+.seoAbout .seoNote,.seoCities summary span,.seoCities ul{color:#4b6476}
+/* graphs: light panels with bold bars so busy vs. dead is easy to read */
+.busyBox{background:#ffffff;color:#0F2436;border:1px solid #e4ddcb;box-shadow:0 1px 3px rgba(15,36,54,.08);--chalk:#0F2436;--cyan:#3E6A80;--muted:#3E6A80;--line:rgba(15,36,54,.15)}
+.busyBox .section{color:#0F2436}
+.busyBox a,.busyBox summary,.nowWork summary{color:#B5401C}
+.peakTag,.busyInfo{background:#F3F5F7;color:#0F2436}
+.peakTag b{color:#C2410C}.peakTag.q b{color:#1E7F45}
+.hist{border-bottom:2px solid rgba(15,36,54,.35)}
+.hcol .hb{background:rgba(15,36,54,.14)}
+.hcol .hb.peak{background:rgba(242,140,40,.5)}
+.hcol .tb{box-shadow:0 0 0 1px rgba(15,36,54,.35)}
+.hm i.now{box-shadow:0 0 0 2px #0F2436}
+.mbars{background:#F3F5F7;border-top:1px solid #e4ddcb}
+.mbars .ml{color:#3E6A80}
 </style>
 </head>
 <body>
@@ -928,7 +958,7 @@ function miniBars(tid){
   const today=txDay(Date.now()),nowH=txHour(Date.now()),sum=Array(24).fill(0),cnt=Array(24).fill(0);
   D.reports.filter(r=>r.terminal_id===tid&&!r.hidden&&!r.disputed&&txDay(rt(r))===today).forEach(r=>{const h=txHour(rt(r));sum[h]+=r.status;cnt[h]++});
   return `<span class="mbars"><span class="mb">${sum.map((v,h)=>{const a=cnt[h]?v/cnt[h]:null;
-    return `<i style="height:${a===null?'3px':Math.max(12,(a+1)/4*100)+'%'};background:${a===null?'rgba(127,179,199,.18)':ST[Math.round(a)].c}${h===nowH?';box-shadow:0 0 0 2px var(--orange2)':''}"></i>`}).join('')}</span><span class="ml"><span>12a</span><span>6a</span><span>12p</span><span>6p</span><span>11p</span></span></span>`;
+    return `<i style="height:${a===null?'3px':Math.max(12,(a+1)/4*100)+'%'};background:${a===null?'rgba(15,36,54,.14)':ST[Math.round(a)].c}${h===nowH?';box-shadow:0 0 0 2px var(--orange2)':''}"></i>`}).join('')}</span><span class="ml"><span>12a</span><span>6a</span><span>12p</span><span>6p</span><span>11p</span></span></span>`;
 }
 function racks(){
   const q=(S.q||'').toLowerCase(),mine=myActive();
@@ -1095,13 +1125,13 @@ function drawMonth(id){
   const cell={};b.rows.forEach(r=>cell[(+r.dow)+'-'+(+r.hr)]={v:+r.avg_status,n:+r.report_count,t:+r.avg_trucks,dr:r.driver_count!=null?+r.driver_count:0});
   const order=[1,2,3,4,5,6,0],SHORT=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   const grid=order.map(d=>`<span class="hmDay${d===dow?' today':''}">${SHORT[d]}</span>`+Array.from({length:24},(_,h)=>{const c=cell[d+'-'+h];
-    return `<i class="${d===dow&&h===nowH?'now':''}" onclick="hmPick(this)" data-info="${SHORT[d]} ${hrLabel(h)}${c?': '+ST[Math.round(c.v)].n+' · about '+Math.round(c.t)+' trucks · '+whoTxt(c.n,c.dr):': no reports yet'}" title="${SHORT[d]} ${hrLabel(h)}${c?': '+ST[Math.round(c.v)].n+', about '+Math.round(c.t)+' trucks ('+c.n+' report'+(c.n>1?'s':'')+')':': no reports'}" style="background:${c?ST[Math.round(c.v)].c:'rgba(127,179,199,.12)'}"></i>`}).join('')).join('');
+    return `<i class="${d===dow&&h===nowH?'now':''}" onclick="hmPick(this)" data-info="${SHORT[d]} ${hrLabel(h)}${c?': '+ST[Math.round(c.v)].n+' · about '+Math.round(c.t)+' trucks · '+whoTxt(c.n,c.dr):': no reports yet'}" title="${SHORT[d]} ${hrLabel(h)}${c?': '+ST[Math.round(c.v)].n+', about '+Math.round(c.t)+' trucks ('+c.n+' report'+(c.n>1?'s':'')+')':': no reports'}" style="background:${c?ST[Math.round(c.v)].c:'rgba(15,36,54,.08)'}"></i>`}).join('')).join('');
   const ranked=b.rows.filter(r=>+r.report_count>=1).sort((x,y)=>(+y.avg_status)-(+x.avg_status)||(+y.avg_trucks)-(+x.avg_trucks)||(+y.report_count)-(+x.report_count));
   const peaks=ranked.slice(0,3).map(r=>`${SHORT[+r.dow]} ${hrLabel(+r.hr)}`);
   const quiet=ranked.slice(-3).reverse().map(r=>`${SHORT[+r.dow]} ${hrLabel(+r.hr)}`);
   box.innerHTML=head+`<div class="hm" role="img" aria-label="How busy this terminal was by day and hour over the last 30 days">${grid}</div>
     <div class="hmHours"><span></span>${Array.from({length:24},(_,h)=>`<span>${h%3===0?hrLabel(h):''}</span>`).join('')}</div>
-    <div class="hmKey">${ST.map(x=>`<span><i style="background:${x.c}"></i>${x.n}</span>`).join('')}<span><i style="background:rgba(127,179,199,.12)"></i>No reports</span></div>
+    <div class="hmKey">${ST.map(x=>`<span><i style="background:${x.c}"></i>${x.n}</span>`).join('')}<span><i style="background:rgba(15,36,54,.08)"></i>No reports</span></div>
     <p class="busyInfo" id="hmInfo">Tap a square to see how many drivers reported that hour.</p>
     <p class="note" style="margin:8px 0 0"><b style="color:var(--chalk)">Busiest:</b> ${peaks.join(', ')}<br><b style="color:var(--chalk)">Quietest:</b> ${quiet.join(', ')}<br>From ${whoTxt(total,0)} in the last 30 days.</p>`;
 }
@@ -1198,7 +1228,7 @@ function drawBusy(id){
   ${peaks}
   <div class="hist">${cols}</div>
   <div class="barLbl">${usual.map((d,h)=>`<span>${h%3===0?hrLabel(h):''}</span>`).join('')}</div>
-  <div class="hmKey">${showToday?ST.map(x=>`<span><i style="background:${x.c}"></i>${x.n}</span>`).join(''):''}<span><i style="background:rgba(243,241,232,.3)"></i>Usual day</span><span><i style="background:rgba(242,140,40,.55)"></i>Peak hours</span>${showToday?'<span><i style="background:transparent;outline:2px solid var(--chalk)"></i>Right now</span>':''}</div>
+  <div class="hmKey">${showToday?ST.map(x=>`<span><i style="background:${x.c}"></i>${x.n}</span>`).join(''):''}<span><i style="background:rgba(15,36,54,.18)"></i>Usual day</span><span><i style="background:rgba(242,140,40,.55)"></i>Peak hours</span>${showToday?'<span><i style="background:transparent;outline:2px solid var(--chalk)"></i>Right now</span>':''}</div>
   <p class="busyInfo" id="busyInfo">Tap an hour to compare today with a usual ${DAYS[dow]}.</p>
   <p class="note" style="margin:6px 0 0">${note}</p>`;
 }
