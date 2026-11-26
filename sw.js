@@ -1,7 +1,7 @@
 /* fuelhaulers.live app helper.
    Always loads the newest page from the internet. If the phone has no signal,
    it shows the last copy it saved so the app (and the HOS Recap app) still opens. */
-const CACHE = 'fhl-v2';
+const CACHE = 'fhl-v3';
 const PAGES = ['/', '/recap'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => Promise.all(PAGES.map(p => c.add(p).catch(() => {})))));
