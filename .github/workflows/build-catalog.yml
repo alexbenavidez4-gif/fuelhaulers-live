@@ -40,3 +40,20 @@ jobs:
           gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Could not request a Pages build"
         env:
           GH_TOKEN: ${{ github.token }}
+      - name: Tell Bing and other IndexNow search engines about the pages
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        run: |
+          python3 - <<'PY'
+          import json, re, urllib.request
+          urls = re.findall(r"<loc>([^<]+)</loc>", open("sitemap.xml").read())
+          body = json.dumps({"host": "fuelhaulers.live", "key": "cdab372d682e537a7940e7ba2a53b158",
+                             "keyLocation": "https://fuelhaulers.live/cdab372d682e537a7940e7ba2a53b158.txt",
+                             "urlList": urls[:10000]}).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
+                                       headers={"Content-Type": "application/json; charset=utf-8"})
+          try:
+              r = urllib.request.urlopen(req, timeout=30)
+              print("IndexNow:", r.status, "-", len(urls), "URLs sent")
+          except Exception as e:
+              print("IndexNow request failed (not fatal):", e)
+          PY
