@@ -1,0 +1,72 @@
+name: Site health check
+# Every week (and after each site update) visit every page in the sitemap and every
+# link on those pages. If anything is broken, open a GitHub issue (GitHub emails you)
+# listing exactly what to fix. When everything is fixed, the issue closes itself.
+# Also re-tells Bing / IndexNow search engines about every page once a week.
+on:
+  schedule:
+    - cron: "17 11 * * 0"      # Sundays 5:17 am Central (before the Sunday SEO report)
+    - cron: "17 11 * * 3"      # Wednesdays 5:17 am Central
+  workflow_run:
+    workflows: ["Build knowledge catalog"]
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: site-health
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Wait for the site update to go live
+        if: github.event_name == 'workflow_run'
+        run: sleep 120
+      - name: Check every page and link
+        id: links
+        run: |
+          set +e
+          python3 tools/check_links.py https://fuelhaulers.live
+          echo "failed=$?" >> "$GITHUB_OUTPUT"
+          cat link-report.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Open, update, or close the "Broken links" issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FAILED: ${{ steps.links.outputs.failed }}
+        run: |
+          TITLE="Site health: broken links or indexing problems found"
+          NUM=$(gh issue list --state open --search "in:title \"$TITLE\"" --json number --jq '.[0].number // empty')
+          if [ "$FAILED" != "0" ]; then
+            { echo "The automatic check on $(date -u '+%b %d, %Y') found problems. Fix them and this issue closes itself on the next clean check."; echo; cat link-report.md; } > body.md
+            if [ -n "$NUM" ]; then gh issue edit "$NUM" --body-file body.md && gh issue comment "$NUM" --body "Still found problems on $(date -u '+%b %d, %Y'). The list above is up to date."
+            else gh issue create --title "$TITLE" --body-file body.md; fi
+          elif [ -n "$NUM" ]; then
+            gh issue close "$NUM" --comment "✅ Clean check on $(date -u '+%b %d, %Y') — every page and link works."
+          fi
+      - name: Re-tell Bing and IndexNow search engines about every page (weekly)
+        if: github.event_name == 'schedule' && github.event.schedule == '17 11 * * 0'
+        run: |
+          python3 - <<'PY'
+          import json, re, urllib.request
+          urls = re.findall(r"<loc>([^<]+)</loc>", open("sitemap.xml").read())
+          body = json.dumps({"host": "fuelhaulers.live", "key": "cdab372d682e537a7940e7ba2a53b158",
+                             "keyLocation": "https://fuelhaulers.live/cdab372d682e537a7940e7ba2a53b158.txt",
+                             "urlList": urls}).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
+                                       headers={"Content-Type": "application/json; charset=utf-8"})
+          try:
+              print("IndexNow:", urllib.request.urlopen(req, timeout=30).status, "-", len(urls), "URLs sent")
+          except Exception as e:
+              print("IndexNow request failed (not fatal):", e)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: link-report
+          path: link-report.md
