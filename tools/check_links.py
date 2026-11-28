@@ -18,6 +18,8 @@ from urllib.parse import urljoin, urldefrag, urlparse
 BASE = (sys.argv[1] if len(sys.argv) > 1 else "https://fuelhaulers.live").rstrip("/")
 HOST = urlparse(BASE).netloc
 UA = "Mozilla/5.0 (compatible; FuelHaulersLinkCheck/1.0; +https://fuelhaulers.live/)"
+# Some sites hang up on anything that looks like a robot, so try a plain browser-style request too.
+UA_PLAIN = "Mozilla/5.0"
 # Sites that block robots or always answer oddly; a failure there is not a real broken link.
 SKIP_EXTERNAL = ("fonts.googleapis.com", "fonts.gstatic.com", "facebook.com", "www.facebook.com",
                  "tiktok.com", "www.tiktok.com", "instagram.com", "www.instagram.com",
@@ -45,24 +47,26 @@ class Links(HTMLParser):
                 self.links.append(v.strip())
 
 
-def fetch(url, method="GET"):
+def fetch(url, method="GET", ua=None):
     """Return (status, final_url, body_text). status 0 = could not connect."""
     for attempt in range(3):
         try:
-            req = urllib.request.Request(url, method=method, headers={"User-Agent": UA})
+            req = urllib.request.Request(url, method=method, headers={"User-Agent": ua or UA, "Accept": "text/html,application/xhtml+xml,*/*;q=0.8", "Accept-Language": "en-US,en;q=0.9"})
             with urllib.request.urlopen(req, timeout=25) as r:
                 ctype = r.headers.get("Content-Type", "")
                 body = r.read(3_000_000).decode("utf-8", "replace") if method == "GET" and ("html" in ctype or "xml" in ctype) else ""
                 return r.status, r.geturl(), body
         except urllib.error.HTTPError as e:
             if e.code in (405, 403) and method == "HEAD":
-                return fetch(url, "GET")
+                return fetch(url, "GET", ua)
             if e.code >= 500 and attempt < 2:   # GitHub sometimes hiccups; try again
                 time.sleep(3); continue
             return e.code, url, ""
         except Exception:
             if attempt < 2:
                 time.sleep(3); continue
+            if ua is None:                       # last try: plain browser-style request
+                return fetch(url, method, UA_PLAIN)
             return 0, url, ""
 
 
